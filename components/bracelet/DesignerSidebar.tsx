@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, ShoppingBag, Sparkles, ChevronRight, LayoutGrid, CircleDot, Heart, Loader2, Search, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import { Bead, BraceletMode, BeadCategory, AVAILABLE_BEADS, CATEGORY_LABELS } from './types';
@@ -82,6 +82,42 @@ export default function DesignerSidebar({
     const [isStoppersExpanded, setIsStoppersExpanded] = useState(true);
     const [isModeMenuOpen, setIsModeMenuOpen] = useState(false);
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+
+    // Drag to scroll logic for categories
+    const categoryContainerRef = useRef<HTMLDivElement>(null);
+    const [isDraggingCategory, setIsDraggingCategory] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [isDragged, setIsDragged] = useState(false);
+
+    const handleMouseDownCategory = (e: React.MouseEvent) => {
+        if (!categoryContainerRef.current) return;
+        setIsDraggingCategory(true);
+        setIsDragged(false);
+        setStartX(e.pageX - categoryContainerRef.current.offsetLeft);
+        setScrollLeft(categoryContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseLeaveCategory = () => {
+        setIsDraggingCategory(false);
+    };
+
+    const handleMouseUpCategory = () => {
+        setIsDraggingCategory(false);
+    };
+
+    const handleMouseMoveCategory = (e: React.MouseEvent) => {
+        if (!isDraggingCategory || !categoryContainerRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - categoryContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 2; // scroll-fast multiplier
+        
+        if (Math.abs(walk) > 5) {
+            setIsDragged(true);
+        }
+        
+        categoryContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
 
     return (
         <div className="w-full h-full bg-white flex flex-col shadow-2xl relative overflow-hidden">
@@ -278,16 +314,30 @@ export default function DesignerSidebar({
                                 </div>
 
                                 {/* Category Tabs */}
-                                <div className={cn(
-                                    "flex-1 flex gap-1.5 overflow-x-auto scrollbar-hide py-1 transition-all",
-                                    isSearchExpanded ? "hidden lg:flex" : "flex"
-                                )}>
+                                <div 
+                                    ref={categoryContainerRef}
+                                    onMouseDown={handleMouseDownCategory}
+                                    onMouseLeave={handleMouseLeaveCategory}
+                                    onMouseUp={handleMouseUpCategory}
+                                    onMouseMove={handleMouseMoveCategory}
+                                    className={cn(
+                                        "flex-1 flex gap-1.5 overflow-x-auto scrollbar-thin py-2 transition-all cursor-grab active:cursor-grabbing",
+                                        isSearchExpanded ? "hidden lg:flex" : "flex"
+                                    )}
+                                >
                                     {Object.entries(categoryLabels)
                                         .filter(([slug]) => !requiredSlugs.includes(slug))
                                         .map(([slug, label]) => (
                                             <button
                                                 key={slug}
-                                                onClick={() => setActiveCategory(slug as BeadCategory)}
+                                                onClick={(e) => {
+                                                    if (isDragged) {
+                                                        e.preventDefault();
+                                                        e.stopPropagation();
+                                                        return;
+                                                    }
+                                                    setActiveCategory(slug as BeadCategory);
+                                                }}
                                                 className={cn(
                                                     "px-3 h-[30px] text-[10px] lg:text-[11px] font-bold rounded-lg transition-all whitespace-nowrap border flex-shrink-0 flex items-center justify-center",
                                                     activeCategory === slug
