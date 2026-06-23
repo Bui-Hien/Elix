@@ -1,0 +1,2922 @@
+// https://seravian.vn/api/beads
+{
+    "success": true,
+    "data": {
+        "materials": [
+            {
+                "id": "bead_mov8fmfd",
+                "name": "Ai  Đá mắt hổ vàng nhạt",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "NFC智能水晶",
+                "category_id": 31,
+                "description": "Tên sản phẩm: Hạt đá mắt hổ vàng nhạt\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên phối hợp kim xi mạ \nKích thước: 12 mm\nMàu sắc: Xanh vằn vàng ánh kim",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8cu09",
+                "name": "Ai Đá mắt hổi vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "NFC智能水晶",
+                "category_id": 31,
+                "description": "Tên sản phẩm: đá mắt hổ vàng phối khoen chặn)\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu:  Đá tự nhiên phối hợp kim xi mạ \nKích thước:  12 mm\nMàu sắc: Vàng mật ong ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8evgq",
+                "name": "Ai Malachite ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "NFC智能水晶",
+                "category_id": 31,
+                "description": "Tên sản phẩm: đá Malachite phối khoen chặn\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu:  Đá tự nhiên phối hợp kim xi mạ \nKích thước: 12 mm\nMàu sắc: Xanh lá cây có vân sọc ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8dxjw",
+                "name": "Ai Obsidian ánh bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "NFC智能水晶",
+                "category_id": 31,
+                "description": "Tên sản phẩm:  Đá Obsidian ánh bạc phối khoen chặn\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu:  Đá tự nhiên phối hợp kim xi mạ \nKích thước: 12 mm\nMàu sắc: Đen phối ánh bạc ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowlxfbr",
+                "name": "Ai Thạch anh tím",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "NFC智能水晶",
+                "category_id": 31,
+                "description": "Tên sản phẩm:  Đá thạch anh tím phối khoen chặn\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu:   Đá tự nhiên phối hợp kim xi mạ \nKích thước:  12 mm\nMàu sắc: Tím đậm phối vân trắng ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4c7dv",
+                "name": "Thạch anh tóc lông thỏ đỏ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "兔毛水晶",
+                "category_id": 8,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4e8v7",
+                "name": "Thạch anh tóc lông thỏ xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "兔毛水晶",
+                "category_id": 8,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu58xh3",
+                "name": "ĐábLarimar",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu61h7u",
+                "name": "Hạt trầm hương Hải Nam",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu59eg3",
+                "name": "Kyanite",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu58lmu",
+                "name": "Lapis lazuli",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5jdv1",
+                "name": "Malachite ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5khje",
+                "name": "Ngọc hồng lựu",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowm3a2o",
+                "name": "Ngọc trai nước ngọt",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu57ugh",
+                "name": "Rhodochrosite ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5lxdv",
+                "name": "Seraphinite ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ivt3",
+                "name": "Thạch anh tím lithium",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ab0k",
+                "name": "Tourmaline đen",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "其他",
+                "category_id": 29,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu46hii",
+                "name": "Thạch anh tóc đen",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "发晶",
+                "category_id": 7,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4aj4e",
+                "name": "Thạch anh tóc đen vàng cao cấp",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "发晶",
+                "category_id": 7,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu48frk",
+                "name": "Thạch anh tóc vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "发晶",
+                "category_id": 7,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu49kip",
+                "name": "Thạch anh tóc xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "发晶",
+                "category_id": 7,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4tsxg",
+                "name": "Đá Amazonite",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "天河石",
+                "category_id": 15,
+                "description": "Tên sản phẩm: Hạt đá Amazonite tự nhiên xỏ vòng tay \nThương hiệu: OEM\nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên\nKích thước: 8 mm, 10 mm, 12mm\nMàu sắc: Xanh ngọc lam phối vân trắng nhẹ tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4z9ww",
+                "name": "Đá mặt trời",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "太阳石",
+                "category_id": 17,
+                "description": "Tên sản phẩm chính thức: Hạt đá mặt trời tự nhiên xỏ vòng trang trí\nThương hiệu: OEM  \nXuất xứ: Trung Quốc  \nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên (Đá mặt trời)\nKích thước: 8mm, 10mm, 12mm  \nMàu sắc: Cam hồng có hiệu ứng lấp lánh tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu50izs",
+                "name": "Đá mặt trời ánh vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "太阳石",
+                "category_id": 17,
+                "description": "Tên sản phẩm chính thức: Hạt đá mặt trời ánh vàng tự nhiên xỏ vòng trang trí\nThương hiệu: OEM\nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên (Đá mặt trời)\nKích thước: 8mm, 10mm, 12mm\nMàu sắc: Cam nâu đậm có hiệu ứng ánh vàng lấp lánh mạnh ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu42e1k",
+                "name": "Thạch anh ưu linh bông tuyết trắng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "幽灵水晶",
+                "category_id": 6,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu435se",
+                "name": "Thạch anh ưu linh tím",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "幽灵水晶",
+                "category_id": 6,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu445p7",
+                "name": "Thạch anh ưu linh xanh ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "幽灵水晶",
+                "category_id": 6,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5yfje",
+                "name": " Cỏ bốn lá màu bạc ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": "Tên sản phẩm: Hạt phân cách trang trí hình cỏ bốn lá màu bạc \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt hình dạng đặc biệt \nChất liệu: Hợp kim xi mạ\nKích thước: 10mm\nMàu sắc: màu Bạc",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5xfk5",
+                "name": "Hạt chặn đèn lồng vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5r41w",
+                "name": "Hạt chặn Lục tự chân ngôn",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1csex",
+                "name": "Hạt chặn Tôn Ngộ Không",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ujwu",
+                "name": "Hạt trụ hoa văn hồi văn",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt25qwk",
+                "name": "Hạt trụ khắc Lục tự chân ngôn",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt22hss",
+                "name": "Hạt vuông chày kim cang chữ thập",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4w4hu",
+                "name": "Hạt vuông đá mắt hổ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnf1zy",
+                "name": "Hạt vuông thạch anh trắng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5wqup",
+                "name": "Hạt vuông zircon",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu60cp2",
+                "name": "Hạt xoay mây lành",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1uqm7",
+                "name": "Hoa tuyết zircon",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5w1rt",
+                "name": "Hoa zircon màu hồng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1itrk",
+                "name": "Ngôi sao năm cánh bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5sr8g",
+                "name": "Ngôi sao năm cánh vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4q7gx",
+                "name": "Obsidian bạc hình trái tim",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5tfpj",
+                "name": "Vòng chặn  màu vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": "Tên sản phẩm: Khoen chặn hạt trang trí màu vàng\nThương hiệu: OEM\nXuất xứ: Trung Quốc\nLoại mẫu: Hạt hình dạng đặc biệt / Vòng chặn hạt xỏ (Để chặn giữ các hạt đá khi xỏ vòng tay hoặc làm đồ trang sức thủ công)\nChất liệu: Hợp kim xi mạ\nMàu sắc: Màu Vàng ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5oul7",
+                "name": "Vòng chặn màu bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": "Tên sản phẩm: Khoen chặn hạt trang trí màu bạc \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt hình dạng đặc biệt / Vòng chặn hạt xỏ (Dùng làm phụ kiện chế tác trang sức)\nChất liệu: Hợp kim xi mạ\nMàu sắc: Màu Bạc",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5vhs0",
+                "name": "Vòng chặn zircon",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu329m",
+                "name": "Vòng hẹp màu bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5u01m",
+                "name": "Vòng hẹp màu vàng nhám",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形",
+                "category_id": 28,
+                "description": "Tên sản phẩm: Khoen kẹp hạt trang trí màu vàng nhám\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt hình dạng đặc biệt  (Dùng làm phụ kiện chế tác trang sức)\nChất liệu: Hợp kim xi mạ\nMàu sắc: Màu Vàng  (Bề mặt nhám mờ)",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowm520f",
+                "name": "Đá Obsidian Chân Mèo màu bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形珠",
+                "category_id": 28,
+                "description": "Tên sản phẩm chính thức: Hạt charm đá Obsidian ánh bạc tự nhiên hình chân mèo trang trí\nThương hiệu: OEM  \nXuất xứ: Trung Quốc \n Loại mẫu: Hạt hình dạng đặc biệt\nChất liệu: Đá tự nhiên\nKích thước: 12mm\nMàu sắc: Đen xám có hiệu ứng ánh bạc tự nhiên ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mo1m5vjc",
+                "name": "Hạt trụ trầm hương",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "special",
+                "category": "异形珠",
+                "category_id": 28,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4nx67",
+                "name": "Obsidian ánh bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "曜石",
+                "category_id": 13,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4olxr",
+                "name": "Obsidian ánh vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "曜石",
+                "category_id": 13,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4mmai",
+                "name": "Obsidian đen",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "曜石",
+                "category_id": 13,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu6cnx4",
+                "name": "Đá mặt trăng trắng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "月光石",
+                "category_id": 18,
+                "description": "Tên sản phẩm chính thức: Hạt đá mặt trăng tự nhiên xỏ vòng trang trí\nThương hiệu: OEM  \nXuất xứ: Trung Quốc  \nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên \nKích thước: 8mm, 10mm,12mm\nMàu sắc: Trắng ánh xà cừ tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu52cjo",
+                "name": "Đá mặt trăng xám",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "月光石",
+                "category_id": 18,
+                "description": "Tên sản phẩm chính thức: Hạt đá mặt trăng xám tự nhiên xỏ vòng trang trí\nThương hiệu: OEM  \nXuất xứ: Trung Quốc  \nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên \n)Kích thước: 8mm, 10mm, 12mm\nMàu sắc: Xám khói có hiệu ứng ánh xà cừ trắng bạc tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu51eek",
+                "name": "Đá mặt trăng xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "月光石",
+                "category_id": 18,
+                "description": "Tên sản phẩm chính thức: Hạt đá mặt trăng xám tự nhiên xỏ vòng trang trí\nThương hiệu: OEM  \nXuất xứ: Trung Quốc  \nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên \nKích thước: 8mm, 10mm, 12mm\nMàu sắc: Xám khói có hiệu ứng ánh xà cừ trắng bạc tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu56p8p",
+                "name": "Hạt tròn màu đỏ chu sa hoàng đế",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "朱砂",
+                "category_id": 21,
+                "description": "Tên sản phẩm: Hạt tròn màu đỏ chu sa hoàng đế\nThương hiệu: OEM\nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Thạch anh tự nhiên\nKích thước:  8 mm, 10 mm, 12mm\nMàu sắc:  Đỏ chu sa hoàng đế",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu566e3",
+                "name": "Hạt xỏ sa thạch đỏ lấp lánh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "朱砂",
+                "category_id": 21,
+                "description": "Tên sản phẩm: Hạt xỏ vòng tay sa thạch đỏ\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn\nChất liệu: Thạch anh tự nhiên\nKích thước: 8 mm, 10 mm, 12mm\nMàu sắc:  Đỏ sa thạch",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4ifgj",
+                "name": "Đá xanh băng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "海蓝宝水晶",
+                "category_id": 10,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4j7v0",
+                "name": "Đá xanh đậm",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "海蓝宝水晶",
+                "category_id": 10,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4gymb",
+                "name": "Đá xanh trời mây trắng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "海蓝宝水晶",
+                "category_id": 10,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5513w",
+                "name": "Mã não đỏ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "玛瑙",
+                "category_id": 20,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu55fu5",
+                "name": "Mã não vân xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "玛瑙",
+                "category_id": 20,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu53wfz",
+                "name": "Mã não vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "玛瑙",
+                "category_id": 20,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu54l6s",
+                "name": "Mã não xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "玛瑙",
+                "category_id": 20,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsn7gcq",
+                "name": "Thạch anh Himalaya",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "白水晶",
+                "category_id": 1,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnc3ni",
+                "name": "Thạch anh trắng sữa",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "白水晶",
+                "category_id": 1,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsn9jq5",
+                "name": "Thạch anh trắng tinh khiết",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "白水晶",
+                "category_id": 1,
+                "description": "- Xuất xứ: Trung Quốc\n- Thương hiệu: OEM\n- Loại mẫu: Hạt đá tròn có rãnh xỏ trang trí (Dùng làm phụ kiện chế tác trang sức)\n- Chất liệu: Thạch anh tự nhiên\n- Kích thước: 8mm, 10mm, 12mm\n- Màu sắc: Trắng trong suốt",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2jukd",
+                "name": "Thạch anh hồng ánh sao",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "粉水晶",
+                "category_id": 4,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2n3mu",
+                "name": "Thạch anh hồng đào",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "粉水晶",
+                "category_id": 4,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2pc95",
+                "name": "Thạch anh hồng tím",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "粉水晶",
+                "category_id": 4,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstrjg3",
+                "name": "Thạch anh tím Brazil",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "紫水晶",
+                "category_id": 2,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsttacz",
+                "name": "Thạch anh tím oải hương",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "紫水晶",
+                "category_id": 2,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsts520",
+                "name": "Thạch anh tím Uruguay",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "紫水晶",
+                "category_id": 2,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4exei",
+                "name": "Thạch anh keo đỏ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "胶花水晶",
+                "category_id": 9,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4fpoo",
+                "name": "Thạch anh keo vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "胶花水晶",
+                "category_id": 9,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2qto1",
+                "name": "Thạch anh khói tinh khiết",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "茶水晶",
+                "category_id": 5,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnniqx",
+                "name": "Đỏ đậu trầm",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "草莓晶",
+                "category_id": 11,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnowht",
+                "name": "Đỏ máu bồ câu",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "草莓晶",
+                "category_id": 11,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstn03h",
+                "name": "Thạch anh dâu tây xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "草莓晶",
+                "category_id": 11,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4kzzc",
+                "name": "Fluorite xanh",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "萤石",
+                "category_id": 12,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4t9f3",
+                "name": "Đá nho vàng（Đá Prehnite vàng）",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "葡萄石",
+                "category_id": 14,
+                "description": "Tên sản phẩm chính thức: Hạt đá Prehnite vàng tự nhiên xỏ vòng trang trí\nThương hiệu: OEM\nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn\nChất liệu: Đá tự nhiên \nKích thước: 8mm. 10mm, 12mm\nMàu sắc:  Vàng phớt xanh trong mờ tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4snpd",
+                "name": "Đá Prehnite xanh（Đá nho xanh ）",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "葡萄石",
+                "category_id": 14,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu53exs",
+                "name": "Hồng hoa hồng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "蔷薇石",
+                "category_id": 19,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu52xrc",
+                "name": "Mưa hoa anh đào",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "蔷薇石",
+                "category_id": 19,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4ubu1",
+                "name": " Đá mắt hổ vàng nhạt",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "虎眼石",
+                "category_id": 16,
+                "description": "Tên sản phẩm: Đá mắt hổ vàng nhạt \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên (Đá mắt hổ / Tiger's Eye)\nKích thước: 8 mm, 10 mm, 12 mm\nMàu sắc: Vàng nâu có hiệu ứng ánh lụa tự nhiên",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4vgr4",
+                "name": "Đá mắt hổ xanh lam",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "虎眼石",
+                "category_id": 16,
+                "description": "Tên sản phẩm: Hạt đá mắt hổ xanh lam tự nhiên xỏ vòng trang trí\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên \nKích thước: 8mm, 10mm, 12mm\nMàu sắc: Xanh lam đen có hiệu ứng ánh lụa ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4v1q5",
+                "name": "Đá mắt hổi vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "虎眼石",
+                "category_id": 16,
+                "description": "Tên sản phẩm chính thức: Hạt đá mắt hổ vàng tự nhiên xỏ vòng trang trí  Thương hiệu: OEM  \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Đá tự nhiên (Đá mắt hổ) \n Kích thước:  8mm, 10mm, 12mm\nMàu sắc: Vàng nâu có hiệu ứng ánh lụa sắc nét  ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1a2dw",
+                "name": "Bi cầu họa tiết vảy rồng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm:  Hạt charm phân cách bi cầu họa tiết vảy rồng\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Hợp kim xi mạ\nKích thước: 12 mm\nMàu sắc: Bạc ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstwrgh",
+                "name": "Bi cầu màu vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm:  Hạt charm phân cách bi cầu họa tiết đồng tiền\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Hợp kim xi mạ \nKích thước:  10 mm\nMàu sắc: Vàng nhám",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1dlsa",
+                "name": "Bi cầu men lam ",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm: Hạt charm phân cách bi cầu họa tiết \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Hợp kim xi mạ \nKích thước:10 mm\nMàu sắc: Phối nhiều màu (Vàng, xanh lam, đỏ)",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1bprn",
+                "name": "Bi cầu rỗng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm: Hạt charm phân cách bi cầu họa tiết lưới rỗng\nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn rỗng\nChất liệu: Hợp kim xi mạ \nKích thước: 10 mm\nMàu sắc: Bạc sáng ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu640rj",
+                "name": "Hạt bí bạc",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5zgii",
+                "name": "Hạt bí vàng",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu23xw",
+                "name": "Hạt Charm bi cầu đan bện",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm: Hạt phân cách trang trí hình bi cầu \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn  \nChất liệu: Kim loại xi mạ\nKích thước: 8mm\nMàu sắc: Màu bạc",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1f7ya",
+                "name": "Hạt đồng tiền",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu0tm6",
+                "name": "Zaki Ram",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "隔珠",
+                "category_id": 22,
+                "description": "Tên sản phẩm: Hạt charm phân cách trang trí họa tiết \nThương hiệu: OEM \nXuất xứ: Trung Quốc\nLoại mẫu: Hạt tròn \nChất liệu: Hợp kim xi mạ\nKích thước: 12mm\nMàu sắc: Màu Bạc phối màu vàng cổ ",
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2idxy",
+                "name": "Thaạch anh Vàng dạng tháp",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "黄水晶",
+                "category_id": 3,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2fmtj",
+                "name": "Thạch anh vàng chanh trong suốt",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "黄水晶",
+                "category_id": 3,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2goh1",
+                "name": "Thạch anh vàng đậm",
+                "color": "custom",
+                "hex_color": "#FF6B6B",
+                "gradient": null,
+                "material_type": "round",
+                "category": "黄水晶",
+                "category_id": 3,
+                "description": null,
+                "is_active": 1,
+                "sort_order": 0
+            }
+        ],
+        "specifications": [
+            {
+                "id": "bead_mov8fmfd_spec_1778143023702",
+                "material_id": "bead_mov8fmfd",
+                "name": "Ai  Đá mắt hổ vàng nhạt",
+                "image": "/images/image-1778774541350-729252797.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 150000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8cu09_spec_1778142906232",
+                "material_id": "bead_mov8cu09",
+                "name": "Ai Đá mắt hổi vàng",
+                "image": "/images/image-1778774050317-983678354.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 150000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8evgq_spec_1778142990606",
+                "material_id": "bead_mov8evgq",
+                "name": "Ai Malachite ",
+                "image": "/images/image-1778774413837-429140788.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 150000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mov8dxjw_spec_1778142948366",
+                "material_id": "bead_mov8dxjw",
+                "name": "Ai Obsidian ánh bạc",
+                "image": "/images/image-1778774296638-257765823.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 150000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowlxfbr_spec_1778226163333",
+                "material_id": "bead_mowlxfbr",
+                "name": "Ai Thạch anh tím",
+                "image": "/images/image-1778774471717-812828683.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 200000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4c7dv_spec_1775898965562",
+                "material_id": "bead_mnu4c7dv",
+                "name": "Thạch anh tóc lông thỏ đỏ",
+                "image": "/images/image-1775898885902-102563474.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 100000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4e8v7_spec_1775898990123",
+                "material_id": "bead_mnu4e8v7",
+                "name": "Thạch anh tóc lông thỏ xanh",
+                "image": "/images/image-1775898972354-240225962.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 84000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu58xh3_spec_1775900417721",
+                "material_id": "bead_mnu58xh3",
+                "name": "ĐábLarimar",
+                "image": "/images/image-1775900405358-495876980.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 156000,
+                    "10": 320000,
+                    "11": 0,
+                    "12": 480000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu61h7u_spec_1775901755514",
+                "material_id": "bead_mnu61h7u",
+                "name": "Hạt trầm hương Hải Nam",
+                "image": "/images/image-1775901733873-51395765.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 15000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu59eg3_spec_1775900438186",
+                "material_id": "bead_mnu59eg3",
+                "name": "Kyanite",
+                "image": "/images/image-1775900426633-946230054.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 36000,
+                    "10": 72000,
+                    "11": 0,
+                    "12": 108000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu58lmu_spec_1775900397481",
+                "material_id": "bead_mnu58lmu",
+                "name": "Lapis lazuli",
+                "image": "/images/image-1775900387344-119526602.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 32000,
+                    "10": 60000,
+                    "11": 0,
+                    "12": 92000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5jdv1_spec_1775900908271",
+                "material_id": "bead_mnu5jdv1",
+                "name": "Malachite ",
+                "image": "/images/image-1775900893662-221192650.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 16000,
+                    "10": 32000,
+                    "11": 0,
+                    "12": 44000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5khje_spec_1775900999302",
+                "material_id": "bead_mnu5khje",
+                "name": "Ngọc hồng lựu",
+                "image": "/images/image-1775900943018-10149544.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 28000,
+                    "10": 50000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowm3a2o_spec_1778226455357",
+                "material_id": "bead_mowm3a2o",
+                "name": "Ngọc trai nước ngọt",
+                "image": "/images/image-1778226415704-321869234.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 140000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu57ugh_spec_1775900381863",
+                "material_id": "bead_mnu57ugh",
+                "name": "Rhodochrosite ",
+                "image": "/images/image-1775900368409-99225153.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 88000,
+                    "10": 140000,
+                    "11": 0,
+                    "12": 260000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5lxdv_spec_1775901028750",
+                "material_id": "bead_mnu5lxdv",
+                "name": "Seraphinite ",
+                "image": "/images/image-1775901010556-176095757.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 32000,
+                    "10": 60000,
+                    "11": 0,
+                    "12": 92000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ivt3_spec_1775900883592",
+                "material_id": "bead_mnu5ivt3",
+                "name": "Thạch anh tím lithium",
+                "image": "/images/image-1775900869290-353994953.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 36000,
+                    "10": 72000,
+                    "11": 0,
+                    "12": 112000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ab0k_spec_1775900479027",
+                "material_id": "bead_mnu5ab0k",
+                "name": "Tourmaline đen",
+                "image": "/images/image-1775900468436-835426785.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 16000,
+                    "10": 24000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu46hii_spec_1775898693716",
+                "material_id": "bead_mnu46hii",
+                "name": "Thạch anh tóc đen",
+                "image": "/images/image-1775898642330-880876625.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 104000,
+                    "10": 212000,
+                    "11": 0,
+                    "12": 320000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4aj4e_spec_1775898839584",
+                "material_id": "bead_mnu4aj4e",
+                "name": "Thạch anh tóc đen vàng cao cấp",
+                "image": "/images/image-1775898800274-277564748.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 48000,
+                    "10": 100000,
+                    "11": 0,
+                    "12": 148000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu48frk_spec_1775898746053",
+                "material_id": "bead_mnu48frk",
+                "name": "Thạch anh tóc vàng",
+                "image": "/images/image-1775898699870-793196787.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 80000,
+                    "10": 160000,
+                    "11": 0,
+                    "12": 240000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu49kip_spec_1775898791950",
+                "material_id": "bead_mnu49kip",
+                "name": "Thạch anh tóc xanh",
+                "image": "/images/image-1775898754980-581244088.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 56000,
+                    "10": 120000,
+                    "11": 0,
+                    "12": 176000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4tsxg_spec_1775899714093",
+                "material_id": "bead_mnu4tsxg",
+                "name": "Đá Amazonite",
+                "image": "/images/image-1775899703186-494215028.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 20000,
+                    "10": 36000,
+                    "11": 0,
+                    "12": 56000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4z9ww_spec_1775900003768",
+                "material_id": "bead_mnu4z9ww",
+                "name": "Đá mặt trời",
+                "image": "/images/image-1775899959375-663759408.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 40000,
+                    "10": 84000,
+                    "11": 0,
+                    "12": 128000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu50izs_spec_1775900026234",
+                "material_id": "bead_mnu50izs",
+                "name": "Đá mặt trời ánh vàng",
+                "image": "/images/image-1775900012378-224994068.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 156000,
+                    "10": 320000,
+                    "11": 0,
+                    "12": 480000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu42e1k_spec_1775898447519",
+                "material_id": "bead_mnu42e1k",
+                "name": "Thạch anh ưu linh bông tuyết trắng",
+                "image": "/images/image-1775898426976-778570833.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 40000,
+                    "10": 80000,
+                    "11": 0,
+                    "12": 112000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu435se_spec_1775898494985",
+                "material_id": "bead_mnu435se",
+                "name": "Thạch anh ưu linh tím",
+                "image": "/images/image-1775898465014-698911386.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 44000,
+                    "11": 0,
+                    "12": 64000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu445p7_spec_1775898585425",
+                "material_id": "bead_mnu445p7",
+                "name": "Thạch anh ưu linh xanh ",
+                "image": "/images/image-1775898509017-136604753.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 76000,
+                    "10": 136000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5yfje_spec_1775901612836",
+                "material_id": "bead_mnu5yfje",
+                "name": " Cỏ bốn lá màu bạc ",
+                "image": "/images/image-1775928629197-51516271.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 20000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5xfk5_spec_1775901577746",
+                "material_id": "bead_mnu5xfk5",
+                "name": "Hạt chặn đèn lồng vàng",
+                "image": "/images/image-1775928784646-398041191.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 20000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5r41w_spec_1775901282603",
+                "material_id": "bead_mnu5r41w",
+                "name": "Hạt chặn Lục tự chân ngôn",
+                "image": "/images/image-1775926527715-585059888.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 8000,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1csex_spec_1775833431203",
+                "material_id": "bead_mnt1csex",
+                "name": "Hạt chặn Tôn Ngộ Không",
+                "image": "/images/image-1775928081634-836649716.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 8000,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5ujwu_spec_1775901448234",
+                "material_id": "bead_mnu5ujwu",
+                "name": "Hạt trụ hoa văn hồi văn",
+                "image": "/images/image-1775927482279-66483193.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 8000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt25qwk_spec_1775834805074",
+                "material_id": "bead_mnt25qwk",
+                "name": "Hạt trụ khắc Lục tự chân ngôn",
+                "image": "/images/image-1775925542437-73444441.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 9000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt22hss_spec_1775834624496",
+                "material_id": "bead_mnt22hss",
+                "name": "Hạt vuông chày kim cang chữ thập",
+                "image": "/images/image-1775927047326-493991204.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 16000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4w4hu_spec_1775899939991",
+                "material_id": "bead_mnu4w4hu",
+                "name": "Hạt vuông đá mắt hổ",
+                "image": "/images/image-1778750778644-932157295.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 32000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnf1zy_spec_1775810199842",
+                "material_id": "bead_mnsnf1zy",
+                "name": "Hạt vuông thạch anh trắng",
+                "image": "/images/image-1778750644282-156782962.png",
+                "prices": {
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "12": 60000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5wqup_spec_1775901539571",
+                "material_id": "bead_mnu5wqup",
+                "name": "Hạt vuông zircon",
+                "image": "/images/image-1775928914980-246091912.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 32000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu60cp2_spec_1775901709049",
+                "material_id": "bead_mnu60cp2",
+                "name": "Hạt xoay mây lành",
+                "image": "/images/image-1775928461279-758938751.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 8000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1uqm7_spec_1775834269265",
+                "material_id": "bead_mnt1uqm7",
+                "name": "Hoa tuyết zircon",
+                "image": "/images/image-1775929011478-515100574.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 17000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5w1rt_spec_1775901507789",
+                "material_id": "bead_mnu5w1rt",
+                "name": "Hoa zircon màu hồng",
+                "image": "/images/image-1775928542010-268001543.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 17000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1itrk_spec_1775833720586",
+                "material_id": "bead_mnt1itrk",
+                "name": "Ngôi sao năm cánh bạc",
+                "image": "/images/image-1775928858322-840901368.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 20000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5sr8g_spec_1775901352923",
+                "material_id": "bead_mnu5sr8g",
+                "name": "Ngôi sao năm cánh vàng",
+                "image": "/images/image-1775901337075-855897592.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 20000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4q7gx_spec_1775899621741",
+                "material_id": "bead_mnu4q7gx",
+                "name": "Obsidian bạc hình trái tim",
+                "image": "/images/image-1775899532053-494508258.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 50000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5tfpj_spec_1775901379669",
+                "material_id": "bead_mnu5tfpj",
+                "name": "Vòng chặn  màu vàng",
+                "image": "/images/image-1775901365157-463473665.png",
+                "prices": {
+                    "0": 9800,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5oul7_spec_1775901172144",
+                "material_id": "bead_mnu5oul7",
+                "name": "Vòng chặn màu bạc",
+                "image": "/images/image-1775901153625-552113311.png",
+                "prices": {
+                    "0": 9800,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5vhs0_spec_1775901475307",
+                "material_id": "bead_mnu5vhs0",
+                "name": "Vòng chặn zircon",
+                "image": "/images/image-1775901458721-880804777.png",
+                "prices": {
+                    "0": 0,
+                    "6": 15000,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu329m_spec_1775821226780",
+                "material_id": "bead_mnsu329m",
+                "name": "Vòng hẹp màu bạc",
+                "image": "/images/image-1775821209953-282780925.png",
+                "prices": {
+                    "0": 9800,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5u01m_spec_1775901405096",
+                "material_id": "bead_mnu5u01m",
+                "name": "Vòng hẹp màu vàng nhám",
+                "image": "/images/image-1775901386784-449824645.png",
+                "prices": {
+                    "0": 9800,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mowm520f_spec_1778226550313",
+                "material_id": "bead_mowm520f",
+                "name": "Đá Obsidian Chân Mèo màu bạc",
+                "image": "/images/image-1778751386901-563378937.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 90000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mo1m5vjc_spec_1776352146101",
+                "material_id": "bead_mo1m5vjc",
+                "name": "Hạt trụ trầm hương",
+                "image": "/images/image-1776352109302-550650997.png",
+                "prices": {
+                    "0": 3900,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4nx67_spec_1775899447385",
+                "material_id": "bead_mnu4nx67",
+                "name": "Obsidian ánh bạc",
+                "image": "/images/image-1775899425423-513341393.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 12000,
+                    "10": 20000,
+                    "11": 0,
+                    "12": 28000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4olxr_spec_1775899504490",
+                "material_id": "bead_mnu4olxr",
+                "name": "Obsidian ánh vàng",
+                "image": "/images/image-1775899456622-479869863.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 12000,
+                    "10": 16000,
+                    "11": 0,
+                    "12": 24000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4mmai_spec_1775899416584",
+                "material_id": "bead_mnu4mmai",
+                "name": "Obsidian đen",
+                "image": "/images/image-1775899381332-274649689.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 12000,
+                    "10": 16000,
+                    "11": 0,
+                    "12": 20000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu6cnx4_spec_1775902294586",
+                "material_id": "bead_mnu6cnx4",
+                "name": "Đá mặt trăng trắng",
+                "image": "/images/image-1775902261770-103442966.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 77000,
+                    "10": 140000,
+                    "11": 0,
+                    "12": 200000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu52cjo_spec_1775900113965",
+                "material_id": "bead_mnu52cjo",
+                "name": "Đá mặt trăng xám",
+                "image": "/images/image-1775900096489-605159662.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 48000,
+                    "10": 96000,
+                    "11": 0,
+                    "12": 148000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu51eek_spec_1775900090499",
+                "material_id": "bead_mnu51eek",
+                "name": "Đá mặt trăng xanh",
+                "image": "/images/image-1775900074719-828137462.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 64000,
+                    "10": 128000,
+                    "11": 0,
+                    "12": 192000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu56p8p_spec_1775900310454",
+                "material_id": "bead_mnu56p8p",
+                "name": "Hạt tròn màu đỏ chu sa hoàng đế",
+                "image": "/images/image-1775900297392-254120579.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 50000,
+                    "10": 100000,
+                    "11": 0,
+                    "12": 140000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu566e3_spec_1775900292773",
+                "material_id": "bead_mnu566e3",
+                "name": "Hạt xỏ sa thạch đỏ lấp lánh",
+                "image": "/images/image-1775900278301-549743488.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 44000,
+                    "11": 0,
+                    "12": 72000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4ifgj_spec_1775899196945",
+                "material_id": "bead_mnu4ifgj",
+                "name": "Đá xanh băng",
+                "image": "/images/image-1775899168313-923099743.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 68000,
+                    "10": 140000,
+                    "11": 0,
+                    "12": 208000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4j7v0_spec_1775899230095",
+                "material_id": "bead_mnu4j7v0",
+                "name": "Đá xanh đậm",
+                "image": "/images/image-1775899205006-564350375.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 104000,
+                    "10": 212000,
+                    "11": 0,
+                    "12": 320000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4gymb_spec_1775899156313",
+                "material_id": "bead_mnu4gymb",
+                "name": "Đá xanh trời mây trắng",
+                "image": "/images/image-1775899125566-313569140.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 32000,
+                    "10": 64000,
+                    "11": 0,
+                    "12": 96000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5513w_spec_1775900234840",
+                "material_id": "bead_mnu5513w",
+                "name": "Mã não đỏ",
+                "image": "/images/image-1775900221190-221137833.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 8000,
+                    "10": 12000,
+                    "11": 0,
+                    "12": 16000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu55fu5_spec_1775900257303",
+                "material_id": "bead_mnu55fu5",
+                "name": "Mã não vân xanh",
+                "image": "/images/image-1775900240786-560569292.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 20000,
+                    "10": 36000,
+                    "11": 0,
+                    "12": 56000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu53wfz_spec_1775900194610",
+                "material_id": "bead_mnu53wfz",
+                "name": "Mã não vàng",
+                "image": "/images/image-1775900175255-919076319.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 8000,
+                    "10": 12000,
+                    "11": 0,
+                    "12": 16000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu54l6s_spec_1775900215609",
+                "material_id": "bead_mnu54l6s",
+                "name": "Mã não xanh",
+                "image": "/images/image-1775900201705-929994165.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 8000,
+                    "10": 12000,
+                    "11": 0,
+                    "12": 16000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsn7gcq_spec_1775809706005",
+                "material_id": "bead_mnsn7gcq",
+                "name": "Thạch anh Himalaya",
+                "image": "/images/image-1775809654443-461153432.png",
+                "prices": {
+                    "6": 0,
+                    "8": 16000,
+                    "10": 24000,
+                    "12": 32000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnc3ni_spec_1775809942077",
+                "material_id": "bead_mnsnc3ni",
+                "name": "Thạch anh trắng sữa",
+                "image": "/images/image-1775902226865-162275327.png",
+                "prices": {
+                    "6": 0,
+                    "8": 16000,
+                    "10": 32000,
+                    "12": 44000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsn9jq5_spec_1775809786560",
+                "material_id": "bead_mnsn9jq5",
+                "name": "Thạch anh trắng tinh khiết",
+                "image": "/images/image-1775809751232-692142407.png",
+                "prices": {
+                    "6": 0,
+                    "8": 20000,
+                    "10": 40000,
+                    "12": 52000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2jukd_spec_1775835452434",
+                "material_id": "bead_mnt2jukd",
+                "name": "Thạch anh hồng ánh sao",
+                "image": "/images/image-1775835442780-671883805.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 36000,
+                    "10": 72000,
+                    "11": 0,
+                    "12": 112000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2n3mu_spec_1775835636135",
+                "material_id": "bead_mnt2n3mu",
+                "name": "Thạch anh hồng đào",
+                "image": "/images/image-1775835594125-523290704.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 16000,
+                    "10": 32000,
+                    "11": 0,
+                    "12": 52000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2pc95_spec_1775835697036",
+                "material_id": "bead_mnt2pc95",
+                "name": "Thạch anh hồng tím",
+                "image": "/images/image-1775835666888-308980323.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 44000,
+                    "11": 0,
+                    "12": 64000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstrjg3_spec_1775820671875",
+                "material_id": "bead_mnstrjg3",
+                "name": "Thạch anh tím Brazil",
+                "image": "/images/image-1775820662180-99695554.png",
+                "prices": {
+                    "6": 0,
+                    "8": 72000,
+                    "10": 148000,
+                    "12": 224000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsttacz_spec_1775820751263",
+                "material_id": "bead_mnsttacz",
+                "name": "Thạch anh tím oải hương",
+                "image": "/images/image-1775820737164-31996437.png",
+                "prices": {
+                    "6": 0,
+                    "8": 32000,
+                    "10": 56000,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsts520_spec_1775820711948",
+                "material_id": "bead_mnsts520",
+                "name": "Thạch anh tím Uruguay",
+                "image": "/images/image-1775820680523-91433057.png",
+                "prices": {
+                    "6": 0,
+                    "8": 48000,
+                    "10": 96000,
+                    "12": 148000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4exei_spec_1775899032955",
+                "material_id": "bead_mnu4exei",
+                "name": "Thạch anh keo đỏ",
+                "image": "/images/image-1775899008231-964886721.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 132000,
+                    "11": 0,
+                    "12": 200000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4fpoo_spec_1775899080125",
+                "material_id": "bead_mnu4fpoo",
+                "name": "Thạch anh keo vàng",
+                "image": "/images/image-1775899052678-128753116.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 72000,
+                    "11": 0,
+                    "12": 112000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2qto1_spec_1775835758709",
+                "material_id": "bead_mnt2qto1",
+                "name": "Thạch anh khói tinh khiết",
+                "image": "/images/image-1775835744508-734948166.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 44000,
+                    "11": 0,
+                    "12": 72000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnniqx_spec_1775810443558",
+                "material_id": "bead_mnsnniqx",
+                "name": "Đỏ đậu trầm",
+                "image": "/images/image-1775810397046-533776481.png",
+                "prices": {
+                    "6": 0,
+                    "8": 8000,
+                    "10": 16000,
+                    "12": 36000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsnowht_spec_1775810518327",
+                "material_id": "bead_mnsnowht",
+                "name": "Đỏ máu bồ câu",
+                "image": "/images/image-1775810456311-934550798.png",
+                "prices": {
+                    "6": 0,
+                    "8": 16000,
+                    "10": 32000,
+                    "12": 60000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstn03h_spec_1775820493139",
+                "material_id": "bead_mnstn03h",
+                "name": "Thạch anh dâu tây xanh",
+                "image": "/images/image-1775820441727-8774355.png",
+                "prices": {
+                    "6": 0,
+                    "8": 65000,
+                    "10": 100000,
+                    "12": 140000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4kzzc_spec_1775899345132",
+                "material_id": "bead_mnu4kzzc",
+                "name": "Fluorite xanh",
+                "image": "/images/image-1775899292895-943864597.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 32000,
+                    "10": 48000,
+                    "11": 0,
+                    "12": 76000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4t9f3_spec_1775899688855",
+                "material_id": "bead_mnu4t9f3",
+                "name": "Đá nho vàng（Đá Prehnite vàng）",
+                "image": "/images/image-1775899673452-264138149.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 44000,
+                    "10": 88000,
+                    "11": 0,
+                    "12": 128000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4snpd_spec_1775899664164",
+                "material_id": "bead_mnu4snpd",
+                "name": "Đá Prehnite xanh（Đá nho xanh ）",
+                "image": "/images/image-1775899650269-467274351.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 32000,
+                    "10": 64000,
+                    "11": 0,
+                    "12": 96000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu53exs_spec_1775900158961",
+                "material_id": "bead_mnu53exs",
+                "name": "Hồng hoa hồng",
+                "image": "/images/image-1775900144190-862251417.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 48000,
+                    "11": 0,
+                    "12": 76000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu52xrc_spec_1775900139303",
+                "material_id": "bead_mnu52xrc",
+                "name": "Mưa hoa anh đào",
+                "image": "/images/image-1775900126649-350754500.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 44000,
+                    "11": 0,
+                    "12": 68000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4ubu1_spec_1775899749213",
+                "material_id": "bead_mnu4ubu1",
+                "name": " Đá mắt hổ vàng nhạt",
+                "image": "/images/image-1775899733321-430801406.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 28000,
+                    "10": 56000,
+                    "11": 0,
+                    "12": 80000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4vgr4_spec_1775899796165",
+                "material_id": "bead_mnu4vgr4",
+                "name": "Đá mắt hổ xanh lam",
+                "image": "/images/image-1775899782834-578851823.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 44000,
+                    "10": 88000,
+                    "11": 0,
+                    "12": 120000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu4v1q5_spec_1775899769113",
+                "material_id": "bead_mnu4v1q5",
+                "name": "Đá mắt hổi vàng",
+                "image": "/images/image-1775899755219-992545144.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 36000,
+                    "10": 72000,
+                    "11": 0,
+                    "12": 108000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1a2dw_spec_1775833310212",
+                "material_id": "bead_mnt1a2dw",
+                "name": "Bi cầu họa tiết vảy rồng",
+                "image": "/images/image-1775833287056-616606291.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 10000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnstwrgh_spec_1775820933823",
+                "material_id": "bead_mnstwrgh",
+                "name": "Bi cầu màu vàng",
+                "image": "/images/image-1775820907671-361239500.png",
+                "prices": {
+                    "6": 0,
+                    "8": 0,
+                    "10": 10000,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1dlsa_spec_1775833479986",
+                "material_id": "bead_mnt1dlsa",
+                "name": "Bi cầu men lam ",
+                "image": "/images/image-1775833450809-901579645.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 14000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1bprn_spec_1775833393007",
+                "material_id": "bead_mnt1bprn",
+                "name": "Bi cầu rỗng",
+                "image": "/images/image-1775833355882-94975633.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 10000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu640rj_spec_1775901991647",
+                "material_id": "bead_mnu640rj",
+                "name": "Hạt bí bạc",
+                "image": "/images/image-1775901853012-188731441.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 15000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnu5zgii_spec_1775901676219",
+                "material_id": "bead_mnu5zgii",
+                "name": "Hạt bí vàng",
+                "image": "/images/image-1775901640623-815697975.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "11": 0,
+                    "12": 20000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu23xw_spec_1775821169740",
+                "material_id": "bead_mnsu23xw",
+                "name": "Hạt Charm bi cầu đan bện",
+                "image": "/images/image-1775821149483-344744619.png",
+                "prices": {
+                    "6": 0,
+                    "8": 24000,
+                    "10": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt1f7ya_spec_1775833607540",
+                "material_id": "bead_mnt1f7ya",
+                "name": "Hạt đồng tiền",
+                "image": "/images/image-1775833521087-503222834.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 0,
+                    "10": 15000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnsu0tm6_spec_1775821112313",
+                "material_id": "bead_mnsu0tm6",
+                "name": "Zaki Ram",
+                "image": "/images/image-1775821087850-755784489.png",
+                "prices": {
+                    "6": 0,
+                    "8": 0,
+                    "10": 0,
+                    "12": 50000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2idxy_spec_1775835376032",
+                "material_id": "bead_mnt2idxy",
+                "name": "Thaạch anh Vàng dạng tháp",
+                "image": "/images/image-1775835344221-447383182.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 28000,
+                    "10": 52000,
+                    "11": 0,
+                    "12": 80000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2fmtj_spec_1775835254632",
+                "material_id": "bead_mnt2fmtj",
+                "name": "Thạch anh vàng chanh trong suốt",
+                "image": "/images/image-1775835227470-499497013.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 24000,
+                    "10": 48000,
+                    "11": 0,
+                    "12": 76000
+                },
+                "is_active": 1,
+                "sort_order": 0
+            },
+            {
+                "id": "bead_mnt2goh1_spec_1775835334019",
+                "material_id": "bead_mnt2goh1",
+                "name": "Thạch anh vàng đậm",
+                "image": "/images/image-1775835261054-746597003.png",
+                "prices": {
+                    "0": 0,
+                    "6": 0,
+                    "8": 128000,
+                    "10": 268000,
+                    "11": 0,
+                    "12": 0
+                },
+                "is_active": 1,
+                "sort_order": 0
+            }
+        ],
+        "realImages": {
+            "bead_mov8cu09": [
+                {
+                    "material_id": "bead_mov8cu09",
+                    "image_url": "/images/image-1778774093918-301200397.png",
+                    "description": ""
+                }
+            ]
+        }
+    }
+}

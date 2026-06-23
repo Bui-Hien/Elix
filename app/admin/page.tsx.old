@@ -1,0 +1,441 @@
+"use client"
+
+import React from "react"
+import Link from "next/link"
+import {
+  Card,
+  Row,
+  Col,
+  Statistic,
+  Table,
+  Tag,
+  Avatar,
+  Button,
+  Select,
+  Space,
+  Progress,
+  Typography,
+  Tabs,
+} from "antd"
+import {
+  ShoppingOutlined,
+  UserOutlined,
+  DollarOutlined,
+  RiseOutlined,
+  FallOutlined,
+  PlusOutlined,
+  WarningOutlined,
+  ReloadOutlined,
+  CheckCircleOutlined,
+  ClockCircleOutlined,
+} from "@ant-design/icons"
+import {
+  Area,
+  AreaChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts"
+import { mockOrders, mockProducts, mockCustomers } from "@/lib/data"
+import type { ColumnsType } from "antd/es/table"
+
+const { Title, Text, Paragraph } = Typography
+const { Option } = Select
+
+// Chart data
+const chartData = [
+  { month: "T1", value: 1800 },
+  { month: "T2", value: 2200 },
+  { month: "T3", value: 1900 },
+  { month: "T4", value: 2800 },
+  { month: "T5", value: 2400 },
+  { month: "T6", value: 3200 },
+  { month: "T7", value: 2900 },
+  { month: "T8", value: 3500 },
+  { month: "T9", value: 2700 },
+  { month: "T10", value: 3100 },
+  { month: "T11", value: 3800 },
+  { month: "T12", value: 4200 },
+]
+
+const recentOrders = mockOrders.slice(0, 5)
+
+export default function AdminDashboard() {
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+      maximumFractionDigits: 0,
+    }).format(amount)
+  }
+
+  const totalRevenue = mockOrders.reduce((sum, o) => sum + o.total, 0)
+  const totalOrders = mockOrders.length
+  const pendingOrders = mockOrders.filter(
+    (o) => o.status === "PENDING" || o.status === "CONFIRMED"
+  ).length
+  const totalCustomers = mockCustomers?.length || 12
+
+  const columns: ColumnsType<any> = [
+    {
+      title: "Khách hàng",
+      dataIndex: "customer",
+      key: "customer",
+      render: (_, record) => {
+        const customerName =
+          record.shippingAddress?.fullName || record.user?.name || "Khách hàng"
+        return (
+          <Space>
+            <Avatar style={{ backgroundColor: "#1890ff" }}>
+              {customerName.charAt(0)}
+            </Avatar>
+            <div>
+              <div style={{ fontWeight: 500 }}>{customerName}</div>
+              <Text type="secondary" style={{ fontSize: 12 }}>
+                #{(record.orderCode || record.id).slice(0, 6).toUpperCase()}
+              </Text>
+            </div>
+          </Space>
+        )
+      },
+    },
+    {
+      title: "Ngày đặt",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (date) => new Date(date).toLocaleDateString("vi-VN"),
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => {
+        const statusMap: Record<string, { label: string; color: string }> = {
+          DELIVERED: { label: "Đã giao", color: "success" },
+          PENDING: { label: "Chờ xử lý", color: "warning" },
+          PAID: { label: "Đã thanh toán", color: "processing" },
+          SHIPPED: { label: "Đang giao", color: "blue" },
+          CANCELLED: { label: "Đã hủy", color: "error" },
+        }
+        const statusInfo = statusMap[status] || { label: status, color: "default" }
+        return <Tag color={statusInfo.color}>{statusInfo.label}</Tag>
+      },
+    },
+    {
+      title: "Tổng tiền",
+      dataIndex: "total",
+      key: "total",
+      align: "right",
+      render: (total) => <Text strong>{formatCurrency(total)}</Text>,
+    },
+  ]
+
+  return (
+    <div style={{ padding: 0 }}>
+      {/* Page header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 24,
+        }}
+      >
+        <div>
+          <Title level={3} style={{ margin: 0 }}>
+            Dashboard Overview
+          </Title>
+          <Paragraph type="secondary" style={{ margin: "8px 0 0 0" }}>
+            Theo dõi hoạt động và hiệu suất hệ thống
+          </Paragraph>
+        </div>
+        <Space>
+          <Select defaultValue="30days" style={{ width: 140 }}>
+            <Option value="7days">7 ngày qua</Option>
+            <Option value="30days">30 ngày qua</Option>
+            <Option value="90days">90 ngày qua</Option>
+          </Select>
+          <Link href="/admin/products/new">
+            <Button type="primary" icon={<PlusOutlined />}>
+              Sản phẩm mới
+            </Button>
+          </Link>
+        </Space>
+      </div>
+
+      {/* Quick Actions */}
+      <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+        <Col xs={24} md={8}>
+          <Link href="/admin/products/new">
+            <Card
+              hoverable
+              styles={{ body: { padding: 20 } }}
+            >
+              <Space size={16}>
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    backgroundColor: "#f6ffed",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <PlusOutlined style={{ fontSize: 24, color: "#52c41a" }} />
+                </div>
+                <div>
+                  <div style={{ fontWeight: 500, marginBottom: 4 }}>
+                    Thêm sản phẩm
+                  </div>
+                  <Text type="secondary" style={{ fontSize: 13 }}>
+                    Tạo sản phẩm tự động hóa mới
+                  </Text>
+                </div>
+              </Space>
+            </Card>
+          </Link>
+        </Col>
+        <Col xs={24} md={8}>
+          <Link href="/admin/orders?status=PENDING">
+            <Card
+              hoverable
+              styles={{ body: { padding: 20 } }}
+            >
+              <Space size={16}>
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    backgroundColor: "#fff1f0",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <WarningOutlined style={{ fontSize: 24, color: "#ff4d4f" }} />
+                </div>
+                <div>
+                  <div style={{ fontWeight: 500, marginBottom: 4 }}>
+                    Đơn cần duyệt
+                  </div>
+                  <Text type="secondary" style={{ fontSize: 13 }}>
+                    Kiểm tra đơn hàng thất bại
+                  </Text>
+                </div>
+              </Space>
+            </Card>
+          </Link>
+        </Col>
+        <Col xs={24} md={8}>
+          <Card hoverable styles={{ body: { padding: 20 } }}>
+            <Space size={16}>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: 12,
+                  backgroundColor: "#f9f0ff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <ReloadOutlined style={{ fontSize: 24, color: "#722ed1" }} />
+              </div>
+              <div>
+                <div style={{ fontWeight: 500, marginBottom: 4 }}>
+                  Chạy lại thất bại
+                </div>
+                <Text type="secondary" style={{ fontSize: 13 }}>
+                  Thử lại các thực thi lỗi
+                </Text>
+              </div>
+            </Space>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Stats Grid */}
+      <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+        <Col xs={24} sm={12} lg={6}>
+          <Card>
+            <Statistic
+              title="Tổng sản phẩm"
+              value={mockProducts.length}
+              prefix={<ShoppingOutlined />}
+              suffix={
+                <span style={{ fontSize: 14, color: "#52c41a" }}>
+                  <RiseOutlined /> +12%
+                </span>
+              }
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <Card>
+            <Statistic
+              title="Tỉ lệ hoàn thành"
+              value={98.7}
+              precision={1}
+              suffix="%"
+              prefix={<CheckCircleOutlined />}
+              styles={{ value: { color: "#52c41a" } }}
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <Card>
+            <Statistic
+              title="Chờ xử lý"
+              value={pendingOrders}
+              prefix={<ClockCircleOutlined />}
+              suffix={
+                <span style={{ fontSize: 14, color: "#ff4d4f" }}>
+                  <FallOutlined /> -2.1s
+                </span>
+              }
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} lg={6}>
+          <Card>
+            <Statistic
+              title="Khách hàng"
+              value={totalCustomers}
+              prefix={<UserOutlined />}
+              suffix={
+                <span style={{ fontSize: 14, color: "#52c41a" }}>
+                  <RiseOutlined /> +8.2%
+                </span>
+              }
+            />
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Charts and Balance */}
+      <Row gutter={[16, 16]} style={{ marginBottom: 24 }}>
+        <Col xs={24} lg={16}>
+          <Card
+            title="Phân tích hiệu suất"
+            extra={
+              <Tabs
+                defaultActiveKey="revenue"
+                size="small"
+                items={[
+                  { key: "revenue", label: "Doanh thu" },
+                  { key: "orders", label: "Đơn hàng" },
+                  { key: "views", label: "Lượt xem" },
+                ]}
+              />
+            }
+            styles={{ body: { paddingTop: 24 } }}
+          >
+            <div style={{ height: 300 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart
+                  data={chartData}
+                  margin={{ top: 5, right: 10, left: -10, bottom: 5 }}
+                >
+                  <defs>
+                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#1890ff" stopOpacity={0.15} />
+                      <stop offset="100%" stopColor="#1890ff" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" vertical={false} />
+                  <XAxis
+                    dataKey="month"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#8c8c8c", fontSize: 12 }}
+                  />
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fill: "#8c8c8c", fontSize: 12 }}
+                    tickFormatter={(value) => `${value / 1000}k`}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "white",
+                      border: "1px solid #d9d9d9",
+                      borderRadius: 8,
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                    }}
+                    formatter={(value: number) => [
+                      `${value.toLocaleString()}`,
+                      "Giá trị",
+                    ]}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="value"
+                    stroke="#1890ff"
+                    strokeWidth={2}
+                    fillOpacity={1}
+                    fill="url(#colorValue)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </Card>
+        </Col>
+
+        <Col xs={24} lg={8}>
+          <Card title="Số dư tài khoản">
+            <Statistic
+              value={totalRevenue}
+              precision={0}
+              styles={{ value: { fontSize: 32, fontWeight: 600, marginBottom: 24 } }}
+              formatter={(value) => formatCurrency(Number(value))}
+            />
+
+            <Space direction="vertical" style={{ width: "100%", marginBottom: 24 }} size={12}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Text type="secondary">Doanh thu tháng</Text>
+                <Text strong>{formatCurrency(50000000)}</Text>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Text type="secondary">Chi phí tháng này</Text>
+                <Text strong>{formatCurrency(7675000)}</Text>
+              </div>
+              <Progress percent={15} strokeColor="#1890ff" />
+            </Space>
+
+            <Space style={{ width: "100%" }}>
+              <Button type="primary" block style={{ flex: 1 }}>
+                Thêm credit
+              </Button>
+              <Button block style={{ flex: 1 }}>
+                Chuyển khoản
+              </Button>
+            </Space>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Recent Activity */}
+      <Card
+        title="Hoạt động gần đây"
+        extra={
+          <Link href="/admin/orders">
+            <Button type="link">Xem tất cả</Button>
+          </Link>
+        }
+      >
+        <Table
+          columns={columns}
+          dataSource={recentOrders}
+          rowKey="id"
+          pagination={false}
+        />
+      </Card>
+    </div>
+  )
+}

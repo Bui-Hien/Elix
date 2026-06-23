@@ -1,0 +1,158 @@
+// https: //seravian.vn/api/beads/categories
+{
+    "success": true,
+    "data": {
+        "categories": [
+            {
+                "id": 31,
+                "name": "NFC智能水晶",
+                "name_vi": "Đá AI",
+                "sort_order": 1
+            },
+            {
+                "id": 1,
+                "name": "白水晶",
+                "name_vi": "Thạch anh trắng",
+                "sort_order": 2
+            },
+            {
+                "id": 2,
+                "name": "紫水晶",
+                "name_vi": "Thạch anh tím",
+                "sort_order": 3
+            },
+            {
+                "id": 4,
+                "name": "粉水晶",
+                "name_vi": "Thạch anh hồng",
+                "sort_order": 4
+            },
+            {
+                "id": 8,
+                "name": "兔毛水晶",
+                "name_vi": "Thạch anh tóc lông thỏ",
+                "sort_order": 5
+            },
+            {
+                "id": 9,
+                "name": "胶花水晶",
+                "name_vi": "Thạch anh keo",
+                "sort_order": 6
+            },
+            {
+                "id": 5,
+                "name": "茶水晶",
+                "name_vi": "Thạch anh khói",
+                "sort_order": 7
+            },
+            {
+                "id": 10,
+                "name": "海蓝宝水晶",
+                "name_vi": "Đá Aquamarine",
+                "sort_order": 8
+            },
+            {
+                "id": 7,
+                "name": "发晶",
+                "name_vi": "Thạch anh tóc",
+                "sort_order": 9
+            },
+            {
+                "id": 11,
+                "name": "草莓晶",
+                "name_vi": "Thạch anh dâu tây",
+                "sort_order": 10
+            },
+            {
+                "id": 12,
+                "name": "萤石",
+                "name_vi": "Đá Fluorite",
+                "sort_order": 11
+            },
+            {
+                "id": 6,
+                "name": "幽灵水晶",
+                "name_vi": "Thạch anh ưu linh",
+                "sort_order": 12
+            },
+            {
+                "id": 13,
+                "name": "曜石",
+                "name_vi": "Đá Obsidian",
+                "sort_order": 13
+            },
+            {
+                "id": 14,
+                "name": "葡萄石",
+                "name_vi": "Đá Prehnite",
+                "sort_order": 14
+            },
+            {
+                "id": 3,
+                "name": "黄水晶",
+                "name_vi": "Thạch anh vàng",
+                "sort_order": 15
+            },
+            {
+                "id": 15,
+                "name": "天河石",
+                "name_vi": "Đá Amazonite",
+                "sort_order": 16
+            },
+            {
+                "id": 16,
+                "name": "虎眼石",
+                "name_vi": "Đá mắt hổ",
+                "sort_order": 17
+            },
+            {
+                "id": 17,
+                "name": "太阳石",
+                "name_vi": "Đá mặt trời",
+                "sort_order": 18
+            },
+            {
+                "id": 18,
+                "name": "月光石",
+                "name_vi": "Đá mặt trăng",
+                "sort_order": 19
+            },
+            {
+                "id": 19,
+                "name": "蔷薇石",
+                "name_vi": "Đá rho donite",
+                "sort_order": 20
+            },
+            {
+                "id": 20,
+                "name": "玛瑙",
+                "name_vi": "Mã não",
+                "sort_order": 21
+            },
+            {
+                "id": 21,
+                "name": "朱砂",
+                "name_vi": "Chu sa",
+                "sort_order": 22
+            },
+            {
+                "id": 29,
+                "name": "其他",
+                "name_vi": "Khác",
+                "sort_order": 23
+            },
+            {
+                "id": 22,
+                "name": "隔珠",
+                "name_vi": "hạt phân cách",
+                "sort_order": 24
+            },
+            {
+                "id": 28,
+                "name": "异形珠",
+                "name_vi": "Hạt hình dạng đặc biệt",
+                "sort_order": 25
+            }
+        ]
+    }
+}

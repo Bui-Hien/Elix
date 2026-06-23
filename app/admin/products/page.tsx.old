@@ -1,0 +1,412 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import {
+  Card,
+  Table,
+  Button,
+  Input,
+  Select,
+  Space,
+  Tag,
+  Dropdown,
+  Image,
+  Modal,
+  Statistic,
+  Row,
+  Col,
+  message,
+  Spin,
+} from "antd"
+import type { ColumnsType, TableProps } from "antd/es/table"
+import {
+  PlusOutlined,
+  SearchOutlined,
+  MoreOutlined,
+  EyeOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  PoweroffOutlined,
+  CheckCircleOutlined,
+  DownloadOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons"
+import { productsApi } from "@/lib/api/products"
+import { categoriesApi } from "@/lib/api/categories"
+import { adminProductsApi } from "@/lib/api/admin-products"
+import { Product, Category } from "@/types"
+
+const { Search } = Input
+const { Option } = Select
+
+const ITEMS_PER_PAGE = 10
+
+export default function AdminProductsPage() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [loading, setLoading] = useState(true)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [categoryFilter, setCategoryFilter] = useState<number | undefined>()
+  const [statusFilter, setStatusFilter] = useState<boolean | undefined>()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalCount, setTotalCount] = useState(0)
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [actionLoading, setActionLoading] = useState<number | null>(null)
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true)
+      const response = await productsApi.getAll({
+        q: searchQuery || undefined,
+        categoryId: categoryFilter,
+        page: currentPage,
+        pageSize: ITEMS_PER_PAGE,
+      })
+
+      let filteredItems = response.items
+      if (statusFilter !== undefined) {
+        filteredItems = filteredItems.filter((p) => p.isActive === statusFilter)
+      }
+
+      setProducts(filteredItems)
+      setTotalCount(response.totalCount)
+    } catch (error: any) {
+      message.error("Không thể tải danh sách sản phẩm")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchCategories = async () => {
+    try {
+      const data = await categoriesApi.getAll()
+      setCategories(data)
+    } catch (error: any) {
+      console.error("Failed to fetch categories:", error)
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
+  useEffect(() => {
+    fetchProducts()
+  }, [searchQuery, categoryFilter, statusFilter, currentPage])
+
+  const handleDeleteProduct = async (id: number) => {
+    Modal.confirm({
+      title: "Xác nhận xóa sản phẩm",
+      content: "Bạn có chắc chắn muốn xóa sản phẩm này? Hành động này không thể hoàn tác.",
+      okText: "Xóa",
+      okType: "danger",
+      cancelText: "Hủy",
+      onOk: async () => {
+        try {
+          setActionLoading(id)
+          await adminProductsApi.delete(id)
+          message.success("Đã xóa sản phẩm thành công")
+          fetchProducts()
+        } catch (error: any) {
+          message.error("Không thể xóa sản phẩm")
+        } finally {
+          setActionLoading(null)
+        }
+      },
+    })
+  }
+
+  const handleToggleStatus = async (id: number, currentStatus: boolean) => {
+    try {
+      setActionLoading(id)
+      await adminProductsApi.changeStatus(id, !currentStatus)
+      message.success(`Đã ${!currentStatus ? "kích hoạt" : "vô hiệu hóa"} sản phẩm`)
+      fetchProducts()
+    } catch (error: any) {
+      message.error("Không thể thay đổi trạng thái")
+    } finally {
+      setActionLoading(null)
+    }
+  }
+
+  const handleBulkDelete = async () => {
+    if (selectedRowKeys.length === 0) return
+
+    Modal.confirm({
+      title: `Xóa ${selectedRowKeys.length} sản phẩm`,
+      content: "Bạn có chắc chắn muốn xóa các sản phẩm đã chọn?",
+      okText: "Xóa",
+      okType: "danger",
+      cancelText: "Hủy",
+      onOk: async () => {
+        try {
+          setLoading(true)
+          await Promise.all(
+            selectedRowKeys.map((id) => adminProductsApi.delete(Number(id)))
+          )
+          message.success(`Đã xóa ${selectedRowKeys.length} sản phẩm`)
+          setSelectedRowKeys([])
+          fetchProducts()
+        } catch (error: any) {
+          message.error("Không thể xóa sản phẩm")
+        } finally {
+          setLoading(false)
+        }
+      },
+    })
+  }
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(amount)
+  }
+
+  const columns: ColumnsType<Product> = [
+    {
+      title: "Ảnh",
+      dataIndex: "imageUrl",
+      key: "imageUrl",
+      width: 80,
+      render: (imageUrl, record) => (
+        <Image
+          src={imageUrl || "/placeholder.svg"}
+          alt={record.name}
+          width={56}
+          height={56}
+          style={{ borderRadius: 8, objectFit: "cover" }}
+          preview={false}
+        />
+      ),
+    },
+    {
+      title: "Tên sản phẩm",
+      dataIndex: "name",
+      key: "name",
+      render: (name, record) => (
+        <div>
+          <div style={{ fontWeight: 500, marginBottom: 4 }}>{name}</div>
+          <div style={{ fontSize: 12, color: "#8c8c8c" }}>ID: {record.id}</div>
+        </div>
+      ),
+    },
+    {
+      title: "Danh mục",
+      dataIndex: "category",
+      key: "category",
+      render: (category, record) => (
+        <Tag>{category?.name || record.categoryName || "Không có"}</Tag>
+      ),
+    },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      key: "price",
+      align: "right",
+      render: (price) => <span style={{ fontWeight: 500 }}>{formatCurrency(price)}</span>,
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "isActive",
+      key: "isActive",
+      align: "center",
+      render: (isActive) =>
+        isActive ? (
+          <Tag color="success">Hoạt động</Tag>
+        ) : (
+          <Tag color="error">Đã ẩn</Tag>
+        ),
+    },
+    {
+      title: "Hành động",
+      key: "action",
+      width: 100,
+      align: "center",
+      render: (_, record) => {
+        const isLoading = actionLoading === Number(record.id)
+        return (
+          <Dropdown
+            menu={{
+              items: [
+                {
+                  key: "view",
+                  icon: <EyeOutlined />,
+                  label: <Link href={`/products/${record.id}`}>Xem sản phẩm</Link>,
+                },
+                {
+                  key: "edit",
+                  icon: <EditOutlined />,
+                  label: (
+                    <Link href={`/admin/products/${record.id}/edit`}>Chỉnh sửa</Link>
+                  ),
+                },
+                {
+                  key: "toggle",
+                  icon: <PoweroffOutlined />,
+                  label: record.isActive ? "Ẩn sản phẩm" : "Kích hoạt",
+                  onClick: () =>
+                    handleToggleStatus(Number(record.id), record.isActive || false),
+                },
+                { type: "divider" },
+                {
+                  key: "delete",
+                  icon: <DeleteOutlined />,
+                  label: "Xóa sản phẩm",
+                  danger: true,
+                  onClick: () => handleDeleteProduct(Number(record.id)),
+                },
+              ],
+            }}
+            trigger={["click"]}
+            disabled={isLoading}
+          >
+            <Button
+              type="text"
+              icon={isLoading ? <Spin size="small" /> : <MoreOutlined />}
+            />
+          </Dropdown>
+        )
+      },
+    },
+  ]
+
+  const rowSelection: TableProps<Product>["rowSelection"] = {
+    selectedRowKeys,
+    onChange: (selectedKeys) => setSelectedRowKeys(selectedKeys),
+  }
+
+  return (
+    <div>
+      {/* Page header */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 24,
+        }}
+      >
+        <div>
+          <h1 style={{ fontSize: 24, fontWeight: 600, margin: 0 }}>
+            Quản lý sản phẩm
+          </h1>
+          <p style={{ color: "#8c8c8c", margin: "8px 0 0 0" }}>
+            Quản lý toàn bộ {totalCount} sản phẩm trong cửa hàng
+          </p>
+        </div>
+        <Space>
+          <Button icon={<DownloadOutlined />}>Xuất file</Button>
+          <Link href="/admin/products/new">
+            <Button type="primary" icon={<PlusOutlined />}>
+              Thêm sản phẩm
+            </Button>
+          </Link>
+        </Space>
+      </div>
+
+      {/* Stats cards */}
+      <Row gutter={16} style={{ marginBottom: 24 }}>
+        <Col xs={24} sm={8}>
+          <Card>
+            <Statistic
+              title="Tổng sản phẩm"
+              value={totalCount}
+              prefix={<ShoppingOutlined style={{ color: "#1890ff" }} />}
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={8}>
+          <Card>
+            <Statistic
+              title="Đang hoạt động"
+              value={products.filter((p) => p.isActive).length}
+              prefix={<CheckCircleOutlined style={{ color: "#52c41a" }} />}
+              valueStyle={{ color: "#52c41a" }}
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={8}>
+          <Card>
+            <Statistic
+              title="Đã ẩn"
+              value={products.filter((p) => !p.isActive).length}
+              prefix={<PoweroffOutlined style={{ color: "#ff4d4f" }} />}
+              valueStyle={{ color: "#ff4d4f" }}
+            />
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Filters */}
+      <Card style={{ marginBottom: 16 }}>
+        <Space style={{ width: "100%", justifyContent: "space-between" }} wrap>
+          <Space wrap>
+            <Search
+              placeholder="Tìm kiếm theo tên sản phẩm..."
+              allowClear
+              style={{ width: 300 }}
+              onSearch={(value) => {
+                setSearchQuery(value)
+                setCurrentPage(1)
+              }}
+            />
+            <Select
+              placeholder="Danh mục"
+              style={{ width: 180 }}
+              allowClear
+              onChange={(value) => {
+                setCategoryFilter(value)
+                setCurrentPage(1)
+              }}
+            >
+              {categories.map((cat) => (
+                <Option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </Option>
+              ))}
+            </Select>
+            <Select
+              placeholder="Trạng thái"
+              style={{ width: 160 }}
+              allowClear
+              onChange={(value) => {
+                setStatusFilter(value)
+                setCurrentPage(1)
+              }}
+            >
+              <Option value={true}>Đang hoạt động</Option>
+              <Option value={false}>Đã ẩn</Option>
+            </Select>
+          </Space>
+          {selectedRowKeys.length > 0 && (
+            <Button danger onClick={handleBulkDelete}>
+              Xóa {selectedRowKeys.length} sản phẩm
+            </Button>
+          )}
+        </Space>
+      </Card>
+
+      {/* Products table */}
+      <Card>
+        <Table
+          columns={columns}
+          dataSource={products}
+          rowKey="id"
+          loading={loading}
+          rowSelection={rowSelection}
+          pagination={{
+            current: currentPage,
+            pageSize: ITEMS_PER_PAGE,
+            total: totalCount,
+            onChange: (page) => setCurrentPage(page),
+            showSizeChanger: false,
+            showTotal: (total, range) =>
+              `${range[0]}-${range[1]} trong ${total} sản phẩm`,
+          }}
+        />
+      </Card>
+    </div>
+  )
+}
