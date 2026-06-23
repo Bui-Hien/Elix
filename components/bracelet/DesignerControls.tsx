@@ -55,8 +55,9 @@ interface DesignerControlsProps {
     onAddToCart?: () => Promise<void>;
     onSaveDraft?: () => void;
     onLoadDraft?: (draft: BraceletDraft) => void;
+    wristSizeInfo?: { value: number; status: 'normal' | 'too_short' | 'too_long'; min: number; max: number };
 }
-export default function DesignerControls({ clearLastBead, resetDesigner, hasBeads, totalValue, count, maxBeadsLimit, onAddToCart, onSaveDraft, onLoadDraft }: DesignerControlsProps) {
+export default function DesignerControls({ clearLastBead, resetDesigner, hasBeads, totalValue, wristSizeInfo, count, maxBeadsLimit, onAddToCart, onSaveDraft, onLoadDraft }: DesignerControlsProps) {
     const [showDrafts, setShowDrafts] = useState(false);
     const [drafts, setDrafts] = useState<BraceletDraft[]>([]);
 
@@ -78,9 +79,23 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
                         <span className="text-[10px] lg:text-sm font-bold text-gray-800">
                             {totalValue?.toLocaleString('vi-VN')}₫
                         </span>
-                        <span className="text-[8px] lg:text-[10px] font-medium text-gray-500">
-                            {count}/{maxBeadsLimit} Hạt
-                        </span>
+                        <div className="flex items-center gap-1.5 justify-center">
+                            <span className="text-[8px] lg:text-[10px] font-medium text-gray-500">
+                                {count}/{maxBeadsLimit} Hạt
+                            </span>
+                            {wristSizeInfo && wristSizeInfo.value > 0 && (
+                                <>
+                                    <span className="text-gray-300">•</span>
+                                    <span className={cn(
+                                        "text-[8px] lg:text-[10px] font-medium",
+                                        wristSizeInfo.status === 'too_short' ? "text-amber-500" :
+                                        wristSizeInfo.status === 'too_long' ? "text-red-500" : "text-emerald-500"
+                                    )}>
+                                        {wristSizeInfo.value}cm
+                                    </span>
+                                </>
+                            )}
+                        </div>
                     </div>
                     <button
                         onClick={onAddToCart}

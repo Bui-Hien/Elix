@@ -122,9 +122,11 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, onDragEnd, getBeadP
         <img
           src={bead.image}
           alt={bead.name}
-          className={`w-full h-full ${isRound ? 'object-cover rounded-full' : 'object-contain'}`}
+          draggable={false}
+          className={`w-full h-full pointer-events-none ${isRound ? 'object-cover rounded-full' : 'object-contain'}`}
           style={{
             transform: isRound ? 'scale(1.4)' : 'scale(1)',
+            userSelect: 'none'
           }}
           onError={(e: any) => {
             console.error('Failed to load bead image:', bead.image, 'for bead:', bead.id);

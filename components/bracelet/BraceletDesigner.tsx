@@ -14,8 +14,10 @@ import {
 } from './types';
 import DesignerSidebar from './DesignerSidebar';
 import DesignerCanvas, { DesignerCanvasHandle } from './DesignerCanvas';
+import BeadPreviewCircle from '@/app/(shop)/customize/components/BeadPreviewCircle';
 import DesignerControls, { BraceletDraft, saveDraftToStorage } from './DesignerControls';
 import apiClient from '@/lib/api-client';
+import { BeadCalculator } from '@/lib/diy-utils';
 import { useCart } from '@/hooks/use-cart';
 import { useAppSelector } from '@/lib/redux/hooks';
 
@@ -108,6 +110,7 @@ export default function BraceletDesigner() {
     const [categories, setCategories] = useState<Record<string, string>>({});
     const [requiredSlugs, setRequiredSlugs] = useState<string[]>([]);
     const [currentDraftId, setCurrentDraftId] = useState<string | null>(null);
+    const [beadMaterials, setBeadMaterials] = useState<any[]>([]); // For BeadPreviewCircle
 
     // ── Draft save/load ─────────────────────────────────────────────────
     const handleSaveDraft = useCallback(() => {
@@ -226,29 +229,20 @@ export default function BraceletDesigner() {
         const loadData = async () => {
             try {
                 // Load categories
-                const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/stones/categories`);
+                const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/beads/categories`);
                 if (categoriesResponse.ok) {
                     const categoryData = await categoriesResponse.json();
-                    if (categoryData && categoryData.length > 0) {
+                    if (categoryData && categoryData.success) {
                         const dbCategoryMap: Record<string, string> = {};
                         const dbRequiredSlugs: string[] = [];
-                        categoryData.forEach((cat: any) => {
-                            let slug = cat.slug;
-                            if (!slug) {
-                                // Try to match from CATEGORY_LABELS for backward compatibility
-                                const defaultEntry = Object.entries(CATEGORY_LABELS).find(([key, val]) => val.toLowerCase() === cat.name.toLowerCase());
-                                slug = defaultEntry ? defaultEntry[0] : cat.name.toLowerCase();
-                            }
-                            dbCategoryMap[slug] = cat.name;
-                            if (cat.isRequiredFirst) {
-                                dbRequiredSlugs.push(slug);
-                            }
+                        categoryData.data.categories.forEach((cat: any) => {
+                            let slug = String(cat.id);
+                            dbCategoryMap[slug] = cat.name_vi || cat.name;
                         });
                         if (isMounted) {
                             setCategories(dbCategoryMap);
                             setRequiredSlugs(dbRequiredSlugs);
 
-                            // Initialize activeCategory to the first category from DB
                             const slugs = Object.keys(dbCategoryMap);
                             if (slugs.length > 0) {
                                 setActiveCategory(slugs[0] as BeadCategory);
@@ -261,39 +255,49 @@ export default function BraceletDesigner() {
                     setCategories(CATEGORY_LABELS);
                 }
 
-                // Load stones
-                const stonesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/stones`);
+                // Load beads from DIY Editor API
+                const beadsResponse = await apiClient.get('/beads').catch(() => ({ success: false, data: { materials: [], specifications: [] } }));
                 let stoneBeads: Bead[] = [];
-                if (stonesResponse.ok) {
-                    const stones = await stonesResponse.json();
-                    stoneBeads = stones.map((stone: any) => {
-                        let beadType = stone.stoneCategory?.slug;
-                        if (!beadType && stone.stoneCategory?.name) {
-                            const defaultEntry = Object.entries(CATEGORY_LABELS).find(([key, val]) => val.toLowerCase() === stone.stoneCategory.name.toLowerCase());
-                            beadType = defaultEntry ? defaultEntry[0] : stone.stoneCategory.name.toLowerCase();
+                if (beadsResponse && beadsResponse.success && beadsResponse.data) {
+                    const { materials, specifications } = beadsResponse.data;
+                    if (isMounted) {
+                        setBeadMaterials(materials);
+                    }
+                    
+                    // Map old materials and specs to new Bead format
+                    const sizes = [0, 4, 6, 8, 10, 11, 12, 15];
+                    for (const m of materials) {
+                        const specs = specifications.filter((s: any) => s.material_id === m.id);
+                        for (const spec of specs) {
+                            for (const size of sizes) {
+                                const priceKeyMm = `${size}mm`;
+                                const priceKeyNum = `${size}`;
+                                const price = spec.prices?.[priceKeyMm] || spec.prices?.[priceKeyNum];
+                                if (!price) continue;
+                                
+                                let beadType = String(m.category_id);
+                                
+                                stoneBeads.push({
+                                    id: `db-${beadType}-${spec.id}-${size}`,
+                                    uid: '', // for BeadPreviewCircle
+                                    dbId: spec.id,
+                                    materialId: m.id,
+                                    sizeMm: size,
+                                    type: beadType as BeadCategory,
+                                    color: m.hex_color || '#888888',
+                                    size: size === 0 ? 6 : size,
+                                    displaySize: size === 0 ? 'Đệm' : `${size}mm`,
+                                    label: size === 0 ? `${spec.name} Đệm` : `${spec.name} ${size}mm`,
+                                    name: size === 0 ? `${spec.name} Đệm` : `${spec.name} ${size}mm`, // For BeadPreviewCircle
+                                    price: price,
+                                    shape: 'sphere',
+                                    imageUrl: spec.image || m.image,
+                                    image: spec.image || m.image // For BeadPreviewCircle
+                                } as any);
+                            }
                         }
-                        if (!beadType) beadType = stone.type || 'stone';
-
-                        return {
-                            id: `db-${beadType}-${stone.id}`,
-                            dbId: stone.id,
-                            type: beadType as BeadCategory,
-                            color: stone.color || '#888888',
-                            size: stone.size || 10,
-                            displaySize: stone.displaySize || undefined,
-                            label: stone.name,
-                            price: stone.price,
-                            shape: stone.shape as AccessoryShape,
-                            imageUrl: stone.imageUrl || undefined,
-                            // Only include calibration fields if they have actual values (not null)
-                            // null from API would break the `!== undefined` check in renderShapeSVG
-                            ...(stone.anchorX != null && { anchorX: stone.anchorX }),
-                            ...(stone.anchorY != null && { anchorY: stone.anchorY }),
-                            ...(stone.rotationOffset != null && { rotationOffset: stone.rotationOffset }),
-                            ...(stone.scale != null && { scale: stone.scale }),
-                        };
-                    });
-                    console.log('Loaded stones from DB:', stoneBeads.length);
+                    }
+                    console.log('Loaded beads from DIY API:', stoneBeads.length);
                 }
 
                 // Load bracelet bases
@@ -532,7 +536,7 @@ export default function BraceletDesigner() {
                     const insertionIndex = lastStopperIndex !== -1 ? prev.length - 1 - lastStopperIndex : prev.length - 1;
 
                     // Insert new bead before the last stopper
-                    const newBead = { ...bead, id: `${bead.id}-${Date.now()}-${Math.random()}` };
+                    const newBead = { ...bead, uid: `${bead.id}-${Date.now()}-${Math.random()}` };
                     const result = [...prev];
                     result.splice(insertionIndex, 0, newBead);
 
@@ -597,7 +601,7 @@ export default function BraceletDesigner() {
                 }
             }
 
-            return [...prev, { ...bead, id: `${bead.id}-${Date.now()}-${Math.random()}` }];
+            return [...prev, { ...bead, id: `${bead.id}-${Date.now()}-${Math.random()}`, uid: `${bead.id}-${Date.now()}-${Math.random()}` }];
         });
     }, [maxBeadsLimit, braceletMode, modeConfig, baseBead, selectedStopperId]);
 
@@ -1034,13 +1038,15 @@ export default function BraceletDesigner() {
     }, [selectedBeads, modeConfig, braceletMode]);
 
     const totalValue = useMemo(() => {
-        const beadsValue = selectedBeads.reduce((sum, b) => sum + b.price, 0);
+        const beadsValue = BeadCalculator.calculateTotalPrice(selectedBeads);
         if (braceletMode === 'mini') {
             const baseBead = availableBeads.find(b => b.id === selectedBaseId) || availableBeads.find(b => b.type === 'base');
             return beadsValue + (baseBead?.price || 0);
         }
         return beadsValue;
     }, [selectedBeads, braceletMode, availableBeads, selectedBaseId]);
+
+    const wristSizeInfo = useMemo(() => BeadCalculator.calculateWristSize(selectedBeads), [selectedBeads]);
 
     const hasBeads = selectedBeads.length > 0;
 
@@ -1097,6 +1103,7 @@ export default function BraceletDesigner() {
                             resetDesigner={resetDesigner}
                             hasBeads={hasBeads}
                             totalValue={totalValue}
+                            wristSizeInfo={wristSizeInfo}
                             count={selectedBeads.length}
                             maxBeadsLimit={maxBeadsLimit}
                             onAddToCart={handleAddToCart}
@@ -1107,57 +1114,34 @@ export default function BraceletDesigner() {
 
                     {/* Canvas in center - scrollable */}
                     <div className="flex-1 flex items-center justify-center p-4 overflow-auto">
-                        <div
-                            className="w-full max-w-3xl"
-                            onWheel={(e) => {
-                                const delta = e.deltaY > 0 ? -0.1 : 0.1;
-                                setZoomScale(prev => Math.min(Math.max(prev + delta, 0.5), 2.2));
-                            }}
-                            onTouchStart={(e) => {
-                                if (e.touches.length === 2) {
-                                    const dist = Math.hypot(
-                                        e.touches[0].clientX - e.touches[1].clientX,
-                                        e.touches[0].clientY - e.touches[1].clientY
-                                    );
-                                    pinchDistRef.current = dist;
-                                }
-                            }}
-                            onTouchMove={(e) => {
-                                if (e.touches.length === 2 && pinchDistRef.current !== null) {
-                                    const dist = Math.hypot(
-                                        e.touches[0].clientX - e.touches[1].clientX,
-                                        e.touches[0].clientY - e.touches[1].clientY
-                                    );
-                                    const delta = dist - pinchDistRef.current;
-                                    const zoomDelta = delta * 0.005; // Zoom sensitivity
-                                    setZoomScale(prev => Math.min(Math.max(prev + zoomDelta, 0.5), 2.2));
-                                    pinchDistRef.current = dist;
-                                }
-                            }}
-                            onTouchEnd={(e) => {
-                                if (e.touches.length < 2) {
-                                    pinchDistRef.current = null;
-                                }
-                            }}
-                        >
-                            <DesignerCanvas
-                                ref={canvasRef}
-                                beads={beadsWithPositions}
-                                braceletMode={braceletMode}
-                                centerX={centerX}
-                                centerY={centerY}
-                                radiusX={canvasRadius}
-                                radiusY={canvasRadius}
-                                swapBeads={swapBeads}
-                                removeBead={removeBead}
-                                selectedIdx={selectedIdx}
-                                onSelect={setSelectedIdx}
-                                baseImageUrl={(braceletMode === 'mini' || braceletMode === 'single') ? baseBead?.imageUrl : undefined}
-                                zoomScale={zoomScale}
-                                rotation={rotation}
-                                setRotation={setRotation}
-                            />
-
+                        <div className="w-full h-full min-h-[400px] flex items-center justify-center relative">
+                            {braceletMode === 'full' ? (
+                                <BeadPreviewCircle 
+                                    beads={selectedBeads} 
+                                    setBeads={setSelectedBeads} 
+                                    rotation={rotation} 
+                                    setRotation={setRotation}
+                                    beadMaterials={beadMaterials}
+                                />
+                            ) : (
+                                <DesignerCanvas
+                                    ref={canvasRef}
+                                    beads={beadsWithPositions}
+                                    braceletMode={braceletMode}
+                                    centerX={centerX}
+                                    centerY={centerY}
+                                    radiusX={canvasRadius}
+                                    radiusY={canvasRadius}
+                                    swapBeads={swapBeads}
+                                    removeBead={removeBead}
+                                    selectedIdx={selectedIdx}
+                                    onSelect={setSelectedIdx}
+                                    baseImageUrl={baseBead?.imageUrl}
+                                    zoomScale={zoomScale}
+                                    rotation={rotation}
+                                    setRotation={setRotation}
+                                />
+                            )}
                         </div>
                     </div>
 
