@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Custom draggable bead component that handles rotation correctly
-const DraggableBead = ({ bead, pos, index, radius, rotation, onDragEnd, getBeadPosition, materialType }: any) => {
+const DraggableBead = ({ bead, pos, index, radius, rotation, zoomScale = 1, onDragEnd, getBeadPosition, materialType }: any) => {
   const [isDragging, setIsDragging] = useState(false);
   const [currentPos, setCurrentPos] = useState({ x: 0, y: 0 });
   const beadRef = useRef<HTMLDivElement>(null);
@@ -53,17 +53,17 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, onDragEnd, getBeadP
     const deltaX = clientX - dragStartRef.current.x;
     const deltaY = clientY - dragStartRef.current.y;
     
-    // Convert delta to unrotated space
+    // Convert delta to unrotated space and account for zoomScale
     const rad = -rotation * Math.PI / 180;
-    const unrotatedDeltaX = deltaX * Math.cos(rad) - deltaY * Math.sin(rad);
-    const unrotatedDeltaY = deltaX * Math.sin(rad) + deltaY * Math.cos(rad);
+    const unrotatedDeltaX = (deltaX * Math.cos(rad) - deltaY * Math.sin(rad)) / zoomScale;
+    const unrotatedDeltaY = (deltaX * Math.sin(rad) + deltaY * Math.cos(rad)) / zoomScale;
     
     // Calculate new position
     const newX = dragStartRef.current.beadX + unrotatedDeltaX;
     const newY = dragStartRef.current.beadY + unrotatedDeltaY;
     
     setCurrentPos({ x: newX, y: newY });
-  }, [isDragging, rotation]);
+  }, [isDragging, rotation, zoomScale]);
 
   // Handle mouse/touch up
   const handleEnd = useCallback((e: any) => {
@@ -140,7 +140,7 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, onDragEnd, getBeadP
   );
 };
 
-const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMaterials = [] }: any) => {
+const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMaterials = [], zoomScale = 1 }: any) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
@@ -260,7 +260,7 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
     return {
       baseScale: calculatedBaseScale,
       radius: calculatedRadius,
-      beadPositions: positions
+      beadPositions: positions,
     };
   }, [beads, containerSize.width, containerSize.height, beadMaterials]);
 
@@ -336,38 +336,42 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
   return (
     <div
       ref={containerRef}
-      className="relative flex h-full w-full min-h-[340px] items-center justify-center sm:min-h-[360px] lg:min-h-[480px]"
+      className="relative flex h-full w-full min-h-[340px] items-center justify-center sm:min-h-[360px] lg:min-h-[480px] overflow-hidden"
       style={{ touchAction: 'none' }}
     >
-      {/* Seravian Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-         <h1
-          className="text-xl sm:text-2xl font-serif font-bold tracking-widest select-none opacity-90 transition-all duration-500"
-          style={{ color: logoColor }}
-        >
-          seravian
-        </h1>
-      </div>
-
-      {/* Connection circle/ring */}
-      {beads.length > 0 && (
-        <div
-          className="absolute rounded-full border-2 border-gray-300 pointer-events-none"
-          style={{
-            width: radius * 2,
-            height: radius * 2,
-            left: '50%',
-            top: '50%',
-            transform: `translate(-50%, -50%)`,
-          }}
-        />
-      )}
-
-      {/* Rotating container - handles rotation cleanly */}
-      <div
-        className="absolute inset-0 flex items-center justify-center z-20"
-        style={{ transform: `rotate(${rotation}deg)` }}
+      <div 
+        className="absolute inset-0 flex items-center justify-center transition-transform duration-300 pointer-events-none"
+        style={{ transform: `scale(${zoomScale})` }}
       >
+        {/* Seravian Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+           <h1
+            className="text-xl sm:text-2xl font-serif font-bold tracking-widest select-none opacity-90 transition-all duration-500"
+            style={{ color: logoColor }}
+          >
+            seravian
+          </h1>
+        </div>
+
+        {/* Connection circle/ring */}
+        {beads.length > 0 && (
+          <div
+            className="absolute rounded-full border-2 border-gray-300 pointer-events-none"
+            style={{
+              width: radius * 2,
+              height: radius * 2,
+              left: '50%',
+              top: '50%',
+              transform: `translate(-50%, -50%)`,
+            }}
+          />
+        )}
+
+        {/* Rotating container - handles rotation cleanly */}
+        <div
+          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
+          style={{ transform: `rotate(${rotation}deg)` }}
+        >
         <AnimatePresence>
           {beads.map((bead: any, index: number) => {
             const pos = beadPositions[index];
@@ -385,6 +389,7 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
                 index={index}
                 radius={radius}
                 rotation={rotation}
+                zoomScale={zoomScale}
                 onDragEnd={handleDragEnd}
                 getBeadPosition={getBeadPosition}
                 materialType={materialType}
@@ -392,6 +397,7 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
             );
           })}
         </AnimatePresence>
+        </div>
       </div>
     </div>
   );

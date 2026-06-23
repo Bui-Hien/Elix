@@ -107,6 +107,16 @@ const server = http.createServer((req, res) => {
         res.writeHead(200);
         res.end(JSON.stringify(categories));
     } 
+    else if (pathname === '/api/categories') {
+        const categories = [
+            { id: 1, name: 'Vòng Tay', slug: 'vong-tay', isActive: true },
+            { id: 2, name: 'Vòng Cổ', slug: 'vong-co', isActive: true },
+            { id: 3, name: 'Bông Tai', slug: 'bong-tai', isActive: true },
+            { id: 4, name: 'Nhẫn', slug: 'nhan', isActive: true }
+        ];
+        res.writeHead(200);
+        res.end(JSON.stringify(categories));
+    }
     else if (pathname === '/api/beads/categories') {
         const oldCats = readJsonFile('api_beads_categories.json');
         res.writeHead(200);
