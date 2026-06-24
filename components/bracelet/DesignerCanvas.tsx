@@ -367,8 +367,8 @@ const DesignerCanvas = forwardRef<DesignerCanvasHandle, DesignerCanvasProps>(({
         }
 
         if (!hitBead) {
-            // Empty area -> rotate bracelet (only for full/mini modes)
-            if (!setRotation || (braceletMode !== 'full' && braceletMode !== 'mini')) return;
+            // Empty area -> rotate bracelet
+            if (!setRotation) return;
             e.preventDefault();
 
             // Calculate start angle of pointer relative to center (400, 350)

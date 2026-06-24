@@ -323,6 +323,35 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
     }
   }, [radius, beads, beadPositions, setBeads]);
 
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    if (!setRotation || !containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const startAngle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
+    const startRotation = rotation;
+
+    const onPointerMove = (ev: PointerEvent) => {
+      ev.preventDefault();
+      const currentAngle = Math.atan2(ev.clientY - centerY, ev.clientX - centerX) * (180 / Math.PI);
+      const angleDiff = currentAngle - startAngle;
+      // Using - angleDiff to match DesignerCanvas logic, but usually it's + angleDiff to follow finger
+      let newRotation = (startRotation + angleDiff) % 360; 
+      if (newRotation < 0) newRotation += 360;
+      setRotation(newRotation);
+    };
+
+    const onPointerUp = () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+    };
+
+    window.addEventListener('pointermove', onPointerMove, { passive: false });
+    window.addEventListener('pointerup', onPointerUp);
+  }, [rotation, setRotation]);
+
   const lastBead = beads.length > 0 ? beads[beads.length - 1] : null;
   const materialColorMap: Record<string, string> = {
     'white_crystal': '#9ca3af',
@@ -338,6 +367,7 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
       ref={containerRef}
       className="relative flex h-full w-full min-h-[340px] items-center justify-center sm:min-h-[360px] lg:min-h-[480px] overflow-hidden"
       style={{ touchAction: 'none' }}
+      onPointerDown={handlePointerDown}
     >
       <div 
         className="absolute inset-0 flex items-center justify-center transition-transform duration-300 pointer-events-none"
