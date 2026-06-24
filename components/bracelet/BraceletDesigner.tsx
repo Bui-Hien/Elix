@@ -78,6 +78,40 @@ export default function BraceletDesigner() {
     } = useDesignerActions();
 
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const pinchDistanceRef = useRef<number | null>(null);
+
+    const handleWheel = useCallback((e: React.WheelEvent) => {
+        const scaleChange = e.deltaY > 0 ? -0.1 : 0.1;
+        dispatch(setZoomScale(Math.min(Math.max(zoomScale + scaleChange, 0.5), 2.5)));
+    }, [dispatch, zoomScale]);
+
+    const handleTouchStart = useCallback((e: React.TouchEvent) => {
+        if (e.touches.length === 2) {
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            pinchDistanceRef.current = dist;
+        }
+    }, []);
+
+    const handleTouchMove = useCallback((e: React.TouchEvent) => {
+        if (e.touches.length === 2 && pinchDistanceRef.current !== null) {
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            const scaleChange = (dist - pinchDistanceRef.current) * 0.005;
+            dispatch(setZoomScale(Math.min(Math.max(zoomScale + scaleChange, 0.5), 2.5)));
+            pinchDistanceRef.current = dist;
+        }
+    }, [dispatch, zoomScale]);
+
+    const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+        if (e.touches.length < 2) {
+            pinchDistanceRef.current = null;
+        }
+    }, []);
 
     // Callbacks for Calibration Panel
     const updateBeadCalibration = useCallback((index: number, updates: any) => {
@@ -355,7 +389,13 @@ export default function BraceletDesigner() {
                     </div>
 
                     <div className="flex-1 flex items-center justify-center p-2 pt-20 pb-20 lg:p-4 overflow-hidden relative z-10">
-                        <div className="w-full h-full flex items-center justify-center relative">
+                        <div 
+                            className="w-full h-full flex items-center justify-center relative touch-none"
+                            onWheel={handleWheel}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
                             {braceletMode === 'full' ? (
                                 <BeadPreviewCircle
                                     beads={selectedBeads}
@@ -385,16 +425,6 @@ export default function BraceletDesigner() {
                                 />
                             )}
                         </div>
-                    </div>
-
-                    <div className="absolute bottom-20 right-4 lg:bottom-24 lg:right-8 flex flex-col gap-2 z-40 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100 p-1 pointer-events-auto">
-                        <button onClick={() => dispatch(setZoomScale(Math.min(zoomScale + 0.1, 2.5)))} className="p-2 hover:bg-gray-100 rounded-full text-gray-600 transition-colors">
-                            <Plus className="w-4 h-4" />
-                        </button>
-                        <div className="w-full h-px bg-gray-200" />
-                        <button onClick={() => dispatch(setZoomScale(Math.max(zoomScale - 0.1, 0.5)))} className="p-2 hover:bg-gray-100 rounded-full text-gray-600 transition-colors">
-                            <Minus className="w-4 h-4" />
-                        </button>
                     </div>
 
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 lg:gap-3 z-40 bg-white/90 backdrop-blur-md px-3 py-1.5 lg:px-4 lg:py-2 rounded-2xl shadow-md border border-gray-100 pointer-events-auto">
