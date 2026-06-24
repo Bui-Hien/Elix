@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Layers, Trash2, RotateCcw, Save, FolderOpen, X, Clock } from 'lucide-react';
+import { Layers, Trash2, RotateCcw, Save, FolderOpen, X, Clock, Ruler } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { BraceletMode } from './types';
+import HowToMeasureModal from './HowToMeasureModal';
 
 export interface BraceletDraft {
     id: string;
@@ -60,6 +61,7 @@ interface DesignerControlsProps {
 export default function DesignerControls({ clearLastBead, resetDesigner, hasBeads, totalValue, wristSizeInfo, count, maxBeadsLimit, onAddToCart, onSaveDraft, onLoadDraft }: DesignerControlsProps) {
     const [showDrafts, setShowDrafts] = useState(false);
     const [drafts, setDrafts] = useState<BraceletDraft[]>([]);
+    const [showMeasureModal, setShowMeasureModal] = useState(false);
 
     useEffect(() => {
         if (showDrafts) setDrafts(getDrafts());
@@ -73,23 +75,23 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
     return (
         <>
             {/* Info and Add to Cart Button */}
-            <div className="absolute top-4 left-4 lg:top-8 lg:left-8 z-40">
-                <div className="flex bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100 p-1 lg:p-2 items-center">
-                    <div className="flex flex-col px-2 lg:px-4 text-center min-w-[60px] lg:min-w-[80px]">
-                        <span className="text-[10px] lg:text-sm font-bold text-gray-800">
+            <div className="absolute top-4 left-4 lg:top-8 lg:left-8 z-40 pointer-events-auto flex flex-col lg:flex-row items-start lg:items-center gap-1.5 lg:gap-3">
+                <div className="flex bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100 p-0.5 lg:p-1 items-center">
+                    <div className="flex flex-col px-2.5 lg:px-3 text-left justify-center min-w-[60px] lg:min-w-[80px]">
+                        <span className="text-[10px] lg:text-xs font-bold text-gray-800 leading-tight">
                             {totalValue?.toLocaleString('vi-VN')}₫
                         </span>
-                        <div className="flex items-center gap-1.5 justify-center">
-                            <span className="text-[8px] lg:text-[10px] font-medium text-gray-500">
+                        <div className="flex items-center gap-1 justify-start mt-[1px]">
+                            <span className="text-[8px] font-medium text-gray-500">
                                 {count}/{maxBeadsLimit} Hạt
                             </span>
                             {wristSizeInfo && wristSizeInfo.value > 0 && (
                                 <>
                                     <span className="text-gray-300">•</span>
                                     <span className={cn(
-                                        "text-[8px] lg:text-[10px] font-medium",
+                                        "text-[8px] font-medium",
                                         wristSizeInfo.status === 'too_short' ? "text-amber-500" :
-                                        wristSizeInfo.status === 'too_long' ? "text-red-500" : "text-emerald-500"
+                                          wristSizeInfo.status === 'too_long' ? "text-red-500" : "text-emerald-500"
                                     )}>
                                         {wristSizeInfo.value}cm
                                     </span>
@@ -101,7 +103,7 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
                         onClick={onAddToCart}
                         disabled={count === 0}
                         className={cn(
-                            "h-8 lg:h-10 px-3 lg:px-6 rounded-full text-[10px] lg:text-xs font-bold transition-all whitespace-nowrap",
+                            "h-7 lg:h-9 px-4 lg:px-6 rounded-full text-[8px] lg:text-[11px] font-bold transition-all whitespace-nowrap",
                             count === 0
                                 ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                                 : "bg-[#BD7C6F] text-white shadow-sm hover:bg-[#A86B5E] active:scale-95"
@@ -110,10 +112,18 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
                         MUA NGAY
                     </button>
                 </div>
+                
+                <button
+                    onClick={() => setShowMeasureModal(true)}
+                    className="flex items-center gap-1 px-2 py-1 lg:px-3 lg:py-2 bg-[#0d9488]/10 text-[#0d9488] rounded-full text-[9px] lg:text-xs font-medium hover:bg-[#0d9488]/20 transition-colors whitespace-nowrap shadow-sm border border-[#0d9488]/20 backdrop-blur-md"
+                >
+                    <Ruler className="w-3 h-3 lg:w-4 lg:h-4" />
+                    <span className="hidden lg:inline">Cách đo cổ tay</span>
+                </button>
             </div>
 
             {/* Default Controls + Draft Buttons */}
-            <div className="absolute top-4 right-4 lg:top-8 lg:right-8 flex gap-2 z-40">
+            <div className="absolute top-4 right-4 lg:top-8 lg:right-8 flex gap-2 z-40 pointer-events-auto">
                 {/* Draft buttons */}
                 <div className="flex bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100">
                     {onSaveDraft && (
@@ -179,7 +189,7 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
 
             {/* Drafts Dropdown */}
             {showDrafts && (
-                <div className="absolute top-16 right-4 lg:top-20 lg:right-8 z-50 w-72 lg:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200">
+                <div className="absolute top-16 right-4 lg:top-20 lg:right-8 z-50 w-72 lg:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden animate-in slide-in-from-top-2 fade-in duration-200 pointer-events-auto">
                     <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-100">
                         <h3 className="text-sm font-bold text-gray-800">Bản nháp của bạn</h3>
                         <button onClick={() => setShowDrafts(false)} className="p-1 hover:bg-gray-200 rounded-full transition-colors">
@@ -224,6 +234,11 @@ export default function DesignerControls({ clearLastBead, resetDesigner, hasBead
                     </div>
                 </div>
             )}
+
+            <HowToMeasureModal
+                isOpen={showMeasureModal}
+                onClose={() => setShowMeasureModal(false)}
+            />
         </>
     );
 }

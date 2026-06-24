@@ -111,23 +111,23 @@ export default function DesignerSidebar({
         e.preventDefault();
         const x = e.pageX - categoryContainerRef.current.offsetLeft;
         const walk = (x - startX) * 2; // scroll-fast multiplier
-        
+
         if (Math.abs(walk) > 5) {
             setIsDragged(true);
         }
-        
+
         categoryContainerRef.current.scrollLeft = scrollLeft - walk;
     };
 
     return (
-        <div className="w-full h-full bg-white flex flex-col shadow-2xl relative overflow-hidden">
+        <div className="w-full lg:h-full bg-white flex flex-col shadow-2xl relative lg:overflow-hidden">
             {/* Elegant dot-pattern background */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                 <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#D4AF37 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} />
             </div>
 
             {/* Content Layout */}
-            <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex flex-col flex-1 lg:overflow-hidden">
                 {/* Header & Modes on Desktop */}
                 <div className="hidden lg:block w-full h-auto flex-shrink-0 bg-transparent p-6 pb-0 z-20">
                     {/* Header Desktop */}
@@ -141,7 +141,7 @@ export default function DesignerSidebar({
                     </div>
 
                     {/* Mode Toggle Desktop */}
-                    <div className="flex flex-col lg:flex-row bg-transparent lg:bg-[#F4E5E2] p-0 lg:p-1 rounded-xl gap-2 lg:gap-1 mt-0">
+                    {/* <div className="flex flex-col lg:flex-row bg-transparent lg:bg-[#F4E5E2] p-0 lg:p-1 rounded-xl gap-2 lg:gap-1 mt-0">
                         {MODE_OPTIONS.map(({ key, imageSrc, label }) => (
                             <button
                                 key={key}
@@ -157,12 +157,12 @@ export default function DesignerSidebar({
                                 <span className="text-center leading-[1.1] inline">{label}</span>
                             </button>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Right Side / Main Area */}
-                <div className="flex-1 flex flex-col overflow-hidden relative z-10 bg-white">
-                    <div className="flex-1 overflow-y-auto scroll-smooth">
+                <div className="flex-1 flex flex-col lg:overflow-hidden relative z-10 bg-white">
+                    <div className="flex-1 lg:overflow-y-auto scroll-smooth">
                         {/* Upper Section: Bases & Stoppers */}
                         <div className="p-2 lg:p-6 pt-2 lg:pt-4 space-y-1.5 lg:space-y-4">
                             {/* Base Selection for Mini/Single Mode - Collapsible */}
@@ -279,8 +279,8 @@ export default function DesignerSidebar({
                             </div>
 
                             <div className="flex items-center gap-1.5 lg:gap-2">
-                                {/* Mode Toggle Mobile Menu (Only visible on mobile if search isn't expanded) */}
-                                <div className={cn("relative lg:hidden", isSearchExpanded ? "hidden" : "block")}>
+                                {/* Mode Toggle Mobile Menu - Hidden as requested */}
+                                <div className="hidden">
                                     <button
                                         onClick={() => setIsModeMenuOpen(!isModeMenuOpen)}
                                         className={cn(
@@ -314,7 +314,7 @@ export default function DesignerSidebar({
                                 </div>
 
                                 {/* Category Tabs */}
-                                <div 
+                                <div
                                     ref={categoryContainerRef}
                                     onMouseDown={handleMouseDownCategory}
                                     onMouseLeave={handleMouseLeaveCategory}
@@ -443,9 +443,9 @@ export default function DesignerSidebar({
 
 // ─── Sub-components ────────────────────────────────────────────────
 
-function BeadGrid({ 
+function BeadGrid({
     category, isAtLimit, addBead, availableBeads = AVAILABLE_BEADS, searchTerm = '',
-    requiredSlugs = [], selectedStopperId, setSelectedStopperId 
+    requiredSlugs = [], selectedStopperId, setSelectedStopperId
 }: {
     category: BeadCategory;
     isAtLimit: boolean;
@@ -459,7 +459,7 @@ function BeadGrid({
     const [selectedSize, setSelectedSize] = React.useState<number | null>(null);
 
     const categoryBeads = availableBeads.filter(b => b.type === category);
-    
+
     // Build a map of numeric size → display label
     // Use the first bead's displaySize for each unique numeric size
     const sizeDisplayMap = React.useMemo(() => {
@@ -472,7 +472,7 @@ function BeadGrid({
         });
         return map;
     }, [categoryBeads]);
-    
+
     const uniqueSizes = Array.from(sizeDisplayMap.keys()).sort((a, b) => a - b);
 
     const activeSize = selectedSize !== null && uniqueSizes.includes(selectedSize)
@@ -489,7 +489,7 @@ function BeadGrid({
         <div className="flex flex-col space-y-1.5 lg:space-y-3">
             {/* Size Selector */}
             {uniqueSizes.length > 0 && (
-                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0 lg:pb-1">
+                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide pb-0 lg:pb-1 mb-1 lg:mb-0">
                     <span className="text-[10px] lg:text-xs font-semibold text-gray-500 whitespace-nowrap px-1">Size:</span>
                     {uniqueSizes.map(size => (
                         <button
@@ -508,7 +508,7 @@ function BeadGrid({
                 </div>
             )}
 
-            <div className="grid grid-cols-4 gap-2 lg:gap-4">
+            <div className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-2 lg:gap-4 pb-2 lg:pb-0 scrollbar-hide snap-x px-0.5">
                 {filteredBeads.map(bead => (
                     <motion.button
                         key={bead.id}
@@ -529,9 +529,9 @@ function BeadGrid({
                         }}
                         disabled={isAtLimit}
                         className={cn(
-                            "group relative bg-white border-2 rounded-xl lg:rounded-2xl p-2 lg:p-3 flex flex-col items-center transition-all",
-                            selectedStopperId === bead.id 
-                                ? "border-[#CF9A8D] shadow-md ring-2 ring-[#F3E4E0]" 
+                            "group relative bg-white border-2 rounded-xl lg:rounded-2xl p-2 lg:p-3 flex flex-col items-center transition-all shrink-0 w-[76px] lg:w-auto snap-start lg:snap-align-none",
+                            selectedStopperId === bead.id
+                                ? "border-[#CF9A8D] shadow-md ring-2 ring-[#F3E4E0]"
                                 : "border-[#F3E4E0] hover:shadow-lg hover:border-[#CF9A8D]",
                             isAtLimit && !selectedStopperId && "opacity-40 cursor-not-allowed"
                         )}
@@ -560,9 +560,9 @@ function BeadGrid({
                             )}
 
                             {/* Price Tag Overlay */}
-                            <div 
+                            <div
                                 className="absolute -top-1 -right-6 lg:-top-2 lg:-right-8 text-[8px] lg:text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow-md"
-                                style={{ 
+                                style={{
                                     background: 'linear-gradient(to bottom, #CB9487, #FFFFFF)',
                                     color: '#4C322C',
                                     fontFamily: 'var(--font-roboto), Roboto, sans-serif'
@@ -573,7 +573,7 @@ function BeadGrid({
                         </div>
 
                         {/* Bead Name */}
-                        <span 
+                        <span
                             className="w-full text-[9px] lg:text-[11px] font-semibold leading-tight text-center line-clamp-2 mt-auto"
                             style={{ color: '#553831', fontFamily: 'var(--font-roboto), Roboto, sans-serif' }}
                         >

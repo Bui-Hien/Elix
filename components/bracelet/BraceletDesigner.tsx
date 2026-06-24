@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useMemo, useCallback } from 'react';
+import React, { useRef, useMemo, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from "framer-motion";
 import { toast } from 'sonner';
@@ -16,8 +16,8 @@ import { useCart } from '@/hooks/use-cart';
 
 // Redux
 import { useAppSelector, useAppDispatch } from '@/lib/redux/hooks';
-import { 
-    setSelectedIdx, setZoomScale, setRotation, updateBeadCalibration as updateBeadCalibrationInStore, 
+import {
+    setSelectedIdx, setZoomScale, setRotation, updateBeadCalibration as updateBeadCalibrationInStore,
     syncAllSameType as syncAllSameTypeInStore, resetBeadCalibration as resetBeadCalibrationInStore,
     setActiveCategory, setBraceletMode, setSelectedBaseId, setSelectedStopperId, setSearchTerm
 } from '@/lib/redux/slices/designerSlice';
@@ -46,15 +46,31 @@ export default function BraceletDesigner() {
     // 1. Fetch data
     useBraceletDesignerData();
 
-    // 2. Redux state
+    // 2. Prevent body scroll on desktop
+    useEffect(() => {
+        const mql = window.matchMedia('(min-width: 1024px)');
+        if (mql.matches) {
+            document.body.style.overflow = 'hidden';
+        }
+        const handler = (e: MediaQueryListEvent) => {
+            document.body.style.overflow = e.matches ? 'hidden' : '';
+        };
+        mql.addEventListener('change', handler);
+        return () => {
+            mql.removeEventListener('change', handler);
+            document.body.style.overflow = '';
+        };
+    }, []);
+
+    // 3. Redux state
     const state = useAppSelector(s => s.designer);
-    const { 
-        selectedBeads, activeCategory, braceletMode, customAssets, selectedIdx, 
-        availableBeads, selectedBaseId, selectedStopperId, zoomScale, rotation, 
-        searchTerm, categories, requiredSlugs, beadMaterials 
+    const {
+        selectedBeads, activeCategory, braceletMode, customAssets, selectedIdx,
+        availableBeads, selectedBaseId, selectedStopperId, zoomScale, rotation,
+        searchTerm, categories, requiredSlugs, beadMaterials
     } = state;
 
-    // 3. Actions
+    // 4. Actions
     const {
         addBead, removeBead, swapBeads, clearLastBead, resetDesigner,
         handleSaveDraft, handleLoadDraft, saveDefaultCalibration,
@@ -283,9 +299,9 @@ export default function BraceletDesigner() {
     const wristSizeInfo = useMemo(() => BeadCalculator.calculateWristSize(selectedBeads), [selectedBeads]);
 
     return (
-        <div className="flex flex-col h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] overflow-hidden">
-            <div className="flex-1 flex flex-col lg:flex-row overflow-hidden bg-gray-50/50">
-                <div className="w-full lg:w-[30%] lg:flex-none flex-1 lg:h-full bg-white border-t lg:border-t-0 lg:border-r border-gray-200 flex-shrink-0 order-2 lg:order-1 flex flex-col min-h-0">
+        <div className="flex flex-col w-full min-h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] lg:overflow-hidden">
+            <div className="flex flex-col lg:flex-row lg:overflow-hidden flex-1 bg-gray-50/50">
+                <div className="w-full lg:w-[30%] lg:flex-none lg:h-full bg-white border-t lg:border-t-0 lg:border-r border-gray-200 flex-shrink-0 order-2 lg:order-1 lg:flex lg:flex-col min-h-0">
                     <DesignerSidebar
                         selectedBeads={selectedBeads}
                         activeCategory={activeCategory}
@@ -322,8 +338,8 @@ export default function BraceletDesigner() {
                     />
                 </div>
 
-                <div className="h-1/2 lg:h-full lg:w-[70%] lg:flex-none lg:flex-1 relative flex flex-col overflow-hidden order-1 lg:order-2 bg-white lg:bg-transparent shadow-sm lg:shadow-none z-10">
-                    <div className="flex-shrink-0">
+                <div className="h-[55vh] min-h-[400px] lg:min-h-0 lg:h-full lg:w-[70%] lg:flex-none relative flex flex-col lg:overflow-hidden order-1 lg:order-2 bg-white lg:bg-transparent shadow-sm lg:shadow-none z-10">
+                    <div className="flex-shrink-0 absolute inset-0 pointer-events-none z-40">
                         <DesignerControls
                             clearLastBead={clearLastBead}
                             resetDesigner={resetDesigner}
@@ -338,13 +354,13 @@ export default function BraceletDesigner() {
                         />
                     </div>
 
-                    <div className="flex-1 flex items-center justify-center p-4 overflow-auto">
-                        <div className="w-full h-full min-h-[400px] flex items-center justify-center relative">
+                    <div className="flex-1 flex items-center justify-center p-2 pt-20 pb-20 lg:p-4 overflow-hidden relative z-10">
+                        <div className="w-full h-full flex items-center justify-center relative">
                             {braceletMode === 'full' ? (
-                                <BeadPreviewCircle 
-                                    beads={selectedBeads} 
-                                    setBeads={(b: any) => dispatch({type: 'designer/setSelectedBeads', payload: b})} 
-                                    rotation={rotation} 
+                                <BeadPreviewCircle
+                                    beads={selectedBeads}
+                                    setBeads={(b: any) => dispatch({ type: 'designer/setSelectedBeads', payload: b })}
+                                    rotation={rotation}
                                     setRotation={(r: any) => dispatch(setRotation(r))}
                                     beadMaterials={beadMaterials}
                                     zoomScale={zoomScale}
@@ -371,7 +387,7 @@ export default function BraceletDesigner() {
                         </div>
                     </div>
 
-                    <div className="absolute bottom-20 right-4 lg:bottom-24 lg:right-8 flex flex-col gap-2 z-40 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100 p-1">
+                    <div className="absolute bottom-20 right-4 lg:bottom-24 lg:right-8 flex flex-col gap-2 z-40 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-gray-100 p-1 pointer-events-auto">
                         <button onClick={() => dispatch(setZoomScale(Math.min(zoomScale + 0.1, 2.5)))} className="p-2 hover:bg-gray-100 rounded-full text-gray-600 transition-colors">
                             <Plus className="w-4 h-4" />
                         </button>
@@ -381,10 +397,10 @@ export default function BraceletDesigner() {
                         </button>
                     </div>
 
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 z-40 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-md border border-gray-100">
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 lg:gap-3 z-40 bg-white/90 backdrop-blur-md px-3 py-1.5 lg:px-4 lg:py-2 rounded-2xl shadow-md border border-gray-100 pointer-events-auto">
                         <RotateCcw className="w-4 h-4 text-gray-500" />
-                        <input 
-                            type="range" min="0" max="360" 
+                        <input
+                            type="range" min="0" max="360"
                             value={rotation}
                             onChange={(e) => dispatch(setRotation(Number(e.target.value)))}
                             className="w-32 lg:w-48 accent-[#CF9A8D]"
@@ -454,7 +470,7 @@ function CalibrationPanel({ index, bead, updateCalibration, syncAll, reset, remo
                         className="w-full accent-purple-600"
                     />
                 </div>
-                
+
                 <div className="space-y-2">
                     <div className="flex justify-between text-xs font-semibold text-gray-700">
                         <span>Vị trí Y (Dọc)</span>
