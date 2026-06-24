@@ -367,8 +367,8 @@ const DesignerCanvas = forwardRef<DesignerCanvasHandle, DesignerCanvasProps>(({
         }
 
         if (!hitBead) {
-            // Empty area -> rotate bracelet
-            if (!setRotation) return;
+            // Empty area -> rotate bracelet (only for full/mini modes)
+            if (!setRotation || (braceletMode !== 'full' && braceletMode !== 'mini')) return;
             e.preventDefault();
 
             // Calculate start angle of pointer relative to center (400, 350)
@@ -448,7 +448,7 @@ const DesignerCanvas = forwardRef<DesignerCanvasHandle, DesignerCanvasProps>(({
 
             const dist = Math.hypot(ghostX - startX, ghostY - startY);
             const distFromCenter = Math.hypot(ghostX - 400, ghostY - 350);
-            const isDeleteZone = (braceletMode === 'full' || braceletMode === 'mini') && (distFromCenter > canvasRadiusRef.current + 60);
+            const isDeleteZone = distFromCenter > canvasRadiusRef.current + 60;
             const nearest = findNearest(ghostX, ghostY, dragOrigIdx);
 
             activeDragRef.current = {

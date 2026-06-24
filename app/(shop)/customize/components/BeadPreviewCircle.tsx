@@ -9,9 +9,9 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, zoomScale = 1, onDr
   const [currentPos, setCurrentPos] = useState({ x: 0, y: 0 });
   const beadRef = useRef<HTMLDivElement>(null);
   const dragStartRef = useRef({ x: 0, y: 0, beadX: 0, beadY: 0 });
-  
+
   const { x, y, rotation: rotationToCenter } = getBeadPosition(index);
-  
+
   const isRound = materialType === 'round';
   const isSpacer = bead.sizeMm === 0;
 
@@ -26,13 +26,13 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, zoomScale = 1, onDr
   const handleStart = useCallback((e: any) => {
     e.stopPropagation();
     e.preventDefault();
-    
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
+
     setIsDragging(true);
     setCurrentPos({ x, y });
-    
+
     // Store drag start position
     dragStartRef.current = {
       x: clientX,
@@ -45,30 +45,30 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, zoomScale = 1, onDr
   // Handle mouse/touch move
   const handleMove = useCallback((e: any) => {
     if (!isDragging) return;
-    
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    
+
     // Calculate delta in screen space
     const deltaX = clientX - dragStartRef.current.x;
     const deltaY = clientY - dragStartRef.current.y;
-    
+
     // Convert delta to unrotated space and account for zoomScale
     const rad = -rotation * Math.PI / 180;
     const unrotatedDeltaX = (deltaX * Math.cos(rad) - deltaY * Math.sin(rad)) / zoomScale;
     const unrotatedDeltaY = (deltaX * Math.sin(rad) + deltaY * Math.cos(rad)) / zoomScale;
-    
+
     // Calculate new position
     const newX = dragStartRef.current.beadX + unrotatedDeltaX;
     const newY = dragStartRef.current.beadY + unrotatedDeltaY;
-    
+
     setCurrentPos({ x: newX, y: newY });
   }, [isDragging, rotation, zoomScale]);
 
   // Handle mouse/touch up
   const handleEnd = useCallback((e: any) => {
     if (!isDragging) return;
-    
+
     setIsDragging(false);
     onDragEnd(bead.uid, currentPos.x, currentPos.y);
   }, [isDragging, currentPos, bead.uid, onDragEnd]);
@@ -80,7 +80,7 @@ const DraggableBead = ({ bead, pos, index, radius, rotation, zoomScale = 1, onDr
       document.addEventListener('mouseup', handleEnd);
       document.addEventListener('touchmove', handleMove, { passive: false });
       document.addEventListener('touchend', handleEnd);
-      
+
       return () => {
         document.removeEventListener('mousemove', handleMove);
         document.removeEventListener('mouseup', handleEnd);
@@ -281,7 +281,8 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
     const dist = Math.sqrt(unrotatedX * unrotatedX + unrotatedY * unrotatedY);
 
     if (dist > radius + 60) {
-      setBeads((prev: any[]) => prev.filter(b => b.uid !== id));
+      const newBeads = beads.filter((b: any) => b.uid !== id);
+      setBeads(newBeads);
       if (navigator.vibrate) navigator.vibrate(50);
     } else {
       // Calculate angle from center
@@ -301,7 +302,7 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
           let normalizedBeadAngle = beadBaseAngle;
           if (normalizedBeadAngle < 0) normalizedBeadAngle += 2 * Math.PI;
           if (normalizedBeadAngle >= 2 * Math.PI) normalizedBeadAngle -= 2 * Math.PI;
-          
+
           let diff = Math.abs(normalizedBeadAngle - angle);
           let diffWrapped = Math.abs(normalizedBeadAngle - angle + 2 * Math.PI);
           let diffNegWrapped = Math.abs(normalizedBeadAngle - angle - 2 * Math.PI);
@@ -314,43 +315,14 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
         }
 
         if (targetIndex !== currentIndex && targetIndex >= 0) {
-           const newBeads = [...beads];
-           const [moved] = newBeads.splice(currentIndex, 1);
-           newBeads.splice(targetIndex, 0, moved);
-           setBeads(newBeads);
+          const newBeads = [...beads];
+          const [moved] = newBeads.splice(currentIndex, 1);
+          newBeads.splice(targetIndex, 0, moved);
+          setBeads(newBeads);
         }
       }
     }
   }, [radius, beads, beadPositions, setBeads]);
-
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    if (!setRotation || !containerRef.current) return;
-    
-    const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    
-    const startAngle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
-    const startRotation = rotation;
-
-    const onPointerMove = (ev: PointerEvent) => {
-      ev.preventDefault();
-      const currentAngle = Math.atan2(ev.clientY - centerY, ev.clientX - centerX) * (180 / Math.PI);
-      const angleDiff = currentAngle - startAngle;
-      // Using - angleDiff to match DesignerCanvas logic, but usually it's + angleDiff to follow finger
-      let newRotation = (startRotation + angleDiff) % 360; 
-      if (newRotation < 0) newRotation += 360;
-      setRotation(newRotation);
-    };
-
-    const onPointerUp = () => {
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('pointerup', onPointerUp);
-    };
-
-    window.addEventListener('pointermove', onPointerMove, { passive: false });
-    window.addEventListener('pointerup', onPointerUp);
-  }, [rotation, setRotation]);
 
   const lastBead = beads.length > 0 ? beads[beads.length - 1] : null;
   const materialColorMap: Record<string, string> = {
@@ -367,15 +339,14 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
       ref={containerRef}
       className="relative flex h-full w-full min-h-[340px] items-center justify-center sm:min-h-[360px] lg:min-h-[480px] overflow-hidden"
       style={{ touchAction: 'none' }}
-      onPointerDown={handlePointerDown}
     >
-      <div 
+      <div
         className="absolute inset-0 flex items-center justify-center transition-transform duration-300 pointer-events-none"
         style={{ transform: `scale(${zoomScale})` }}
       >
         {/* Seravian Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-           <h1
+          <h1
             className="text-xl sm:text-2xl font-serif font-bold tracking-widest select-none opacity-90 transition-all duration-500"
             style={{ color: logoColor }}
           >
@@ -402,31 +373,31 @@ const BeadPreviewCircle = ({ beads, setBeads, rotation, setRotation, beadMateria
           className="absolute inset-0 flex items-center justify-center z-20 pointer-events-auto"
           style={{ transform: `rotate(${rotation}deg)` }}
         >
-        <AnimatePresence>
-          {beads.map((bead: any, index: number) => {
-            const pos = beadPositions[index];
-            if (!pos) return null;
+          <AnimatePresence>
+            {beads.map((bead: any, index: number) => {
+              const pos = beadPositions[index];
+              if (!pos) return null;
 
-            // Get material type for this bead
-            const material = beadMaterials.find((m: any) => m.id === bead.materialId);
-            const materialType = material?.material_type || 'round';
+              // Get material type for this bead
+              const material = beadMaterials.find((m: any) => m.id === bead.materialId);
+              const materialType = material?.material_type || 'round';
 
-            return (
-              <DraggableBead
-                key={bead.uid}
-                bead={bead}
-                pos={pos}
-                index={index}
-                radius={radius}
-                rotation={rotation}
-                zoomScale={zoomScale}
-                onDragEnd={handleDragEnd}
-                getBeadPosition={getBeadPosition}
-                materialType={materialType}
-              />
-            );
-          })}
-        </AnimatePresence>
+              return (
+                <DraggableBead
+                  key={bead.uid}
+                  bead={bead}
+                  pos={pos}
+                  index={index}
+                  radius={radius}
+                  rotation={rotation}
+                  zoomScale={zoomScale}
+                  onDragEnd={handleDragEnd}
+                  getBeadPosition={getBeadPosition}
+                  materialType={materialType}
+                />
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
     </div>

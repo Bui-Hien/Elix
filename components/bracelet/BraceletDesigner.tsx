@@ -427,7 +427,16 @@ export default function BraceletDesigner() {
                         </div>
                     </div>
 
-
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 lg:gap-3 z-40 bg-white/90 backdrop-blur-md px-3 py-1.5 lg:px-4 lg:py-2 rounded-2xl shadow-md border border-gray-100 pointer-events-auto">
+                        <RotateCcw className="w-4 h-4 text-gray-500" />
+                        <input
+                            type="range" min="0" max="360"
+                            value={rotation}
+                            onChange={(e) => dispatch(setRotation(Number(e.target.value)))}
+                            className="w-32 lg:w-48 accent-[#CF9A8D]"
+                        />
+                        <span className="text-xs font-medium text-gray-600 w-8">{rotation}°</span>
+                    </div>
 
                     {selectedIdx !== null && selectedBeads[selectedIdx] && isAdmin && (
                         <div className="hidden lg:block">
