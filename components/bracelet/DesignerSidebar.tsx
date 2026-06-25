@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Plus, ShoppingBag, Sparkles, ChevronRight, LayoutGrid, CircleDot, Heart, Loader2, Search, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, ShoppingBag, Sparkles, ChevronRight, LayoutGrid, CircleDot, Heart, Loader2, Search, ChevronDown, ChevronUp, Menu, X, Info } from 'lucide-react';
 import { Bead, BraceletMode, BeadCategory, AVAILABLE_BEADS, CATEGORY_LABELS } from './types';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/lib/redux/hooks';
@@ -457,6 +457,27 @@ function BeadGrid({
     setSelectedStopperId?: (id: string | null) => void;
 }) {
     const [selectedSize, setSelectedSize] = React.useState<number | null>(null);
+    const [detailBead, setDetailBead] = React.useState<any>(null);
+
+    const pressTimer = useRef<NodeJS.Timeout | null>(null);
+    const pressTriggered = useRef<boolean>(false);
+
+    const handlePointerDown = (e: React.PointerEvent, bead: any) => {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        pressTriggered.current = false;
+        pressTimer.current = setTimeout(() => {
+            pressTriggered.current = true;
+            setDetailBead(bead);
+            if (navigator.vibrate) navigator.vibrate(50);
+        }, 500);
+    };
+
+    const handlePointerUpOrLeave = () => {
+        if (pressTimer.current) {
+            clearTimeout(pressTimer.current);
+            pressTimer.current = null;
+        }
+    };
 
     const categoryBeads = availableBeads.filter(b => b.type === category);
 
@@ -512,9 +533,20 @@ function BeadGrid({
                 {filteredBeads.map(bead => (
                     <motion.button
                         key={bead.id}
+                        onPointerDown={(e: any) => handlePointerDown(e, bead)}
+                        onPointerUp={handlePointerUpOrLeave}
+                        onPointerLeave={handlePointerUpOrLeave}
+                        onContextMenu={(e: any) => { e.preventDefault(); }}
                         whileHover={{ scale: isAtLimit ? 1 : 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => {
+                        onClick={(e: any) => {
+                            handlePointerUpOrLeave();
+                            if (pressTriggered.current) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                pressTriggered.current = false;
+                                return;
+                            }
                             // If this bead is a stopper/required item, toggle it instead of adding normally
                             const isStopper = requiredSlugs.includes(bead.type) || bead.type === 'stopper';
                             if (isStopper && setSelectedStopperId) {
@@ -532,10 +564,22 @@ function BeadGrid({
                             "group relative bg-white border-2 rounded-xl lg:rounded-2xl p-2 lg:p-3 flex flex-col items-center transition-all shrink-0 w-[76px] lg:w-auto snap-start lg:snap-align-none",
                             selectedStopperId === bead.id
                                 ? "border-[#CF9A8D] shadow-md ring-2 ring-[#F3E4E0]"
-                                : "border-[#F3E4E0] hover:shadow-lg hover:border-[#CF9A8D]",
+                                : "border-[#F3E4E0] hover:shadow-lg hover:border-[#D93F3F]",
                             isAtLimit && !selectedStopperId && "opacity-40 cursor-not-allowed"
                         )}
                     >
+                        {/* Hover Tooltip at Top */}
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity bg-[#D93F3F] text-white text-[8px] px-2 py-0.5 rounded-full whitespace-nowrap z-20 shadow-md">
+                            Chi tiết xem mô tả
+                        </div>
+
+                        {/* Info Button (Visual only) */}
+                        <div className="absolute top-1 right-1 z-10 pointer-events-none">
+                            <div className="p-1 text-[#45A78E] rounded-full">
+                                <Info className="w-[14px] h-[14px]" />
+                            </div>
+                        </div>
+
                         <div className="relative w-12 h-12 lg:w-16 lg:h-16 mb-2 flex flex-shrink-0 items-center justify-center">
                             {bead.imageUrl ? (
                                 <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-full overflow-hidden shadow-sm">
@@ -582,6 +626,55 @@ function BeadGrid({
                     </motion.button>
                 ))}
             </div>
+
+            <AnimatePresence>
+                {detailBead && (
+                    <BeadDetailsModal bead={detailBead} onClose={() => setDetailBead(null)} />
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
+function BeadDetailsModal({ bead, onClose }: { bead: any, onClose: () => void }) {
+    if (!bead) return null;
+    return (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm pointer-events-auto" onClick={onClose}>
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="bg-white rounded-2xl w-[90vw] max-w-sm overflow-hidden shadow-xl flex flex-col pointer-events-auto relative" 
+                onClick={e => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white z-10 shrink-0">
+                    <div className="pr-4">
+                        <h3 className="font-serif font-bold text-gray-900 text-lg">{bead.label}</h3>
+                        <span className="text-[13px] text-[#CF9A8D] font-medium">{bead.displaySize || `${bead.size}mm`}</span>
+                    </div>
+                    <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors self-start">
+                        <X className="w-5 h-5 text-gray-500" />
+                    </button>
+                </div>
+                
+                {/* Content Area */}
+                <div className="p-4 md:p-5 bg-white overflow-y-auto">
+                    <div className="bg-[#F8FAFC] rounded-xl border border-gray-100 p-4 md:p-5">
+                        <h4 className="text-[11px] font-bold text-[#45A78E] mb-4 uppercase tracking-wider">Mô tả hạt</h4>
+                        <div className="space-y-3.5 text-[12px] md:text-[13px] text-gray-600">
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Tên sản phẩm:</span><span className="font-medium text-gray-800">{bead.label}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Thương hiệu:</span><span className="font-medium text-gray-800">{bead.brand || 'OEM'}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Xuất xứ:</span><span className="font-medium text-gray-800">{bead.origin || 'Trung Quốc'}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Loại mẫu:</span><span className="font-medium text-gray-800">{bead.shape === 'sphere' ? 'Hạt tròn' : (bead.shape || 'Hạt tròn')}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Chất liệu:</span><span className="font-medium text-gray-800">{bead.material || 'Đá tự nhiên phối hợp kim xi mạ'}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Kích thước:</span><span className="font-medium text-gray-800">{bead.displaySize || `${bead.size}mm`}</span></div>
+                            <div className="flex"><span className="w-[90px] md:w-[100px] shrink-0">Màu sắc:</span><span className="font-medium text-gray-800 uppercase">{bead.colorDescription || bead.color || '#FF6B6B'}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
         </div>
     );
 }
